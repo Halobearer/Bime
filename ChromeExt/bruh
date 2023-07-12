@@ -1,0 +1,17 @@
+// Background script for time tracking
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) =&gt; {
+  if (changeInfo.status === 'complete' &amp;&amp; isSocialMediaWebsite(tab.url)) {
+    chrome.storage.local.get(['totalTime'], (result) =&gt; {
+      const totalTime = result.totalTime || 0;
+      const newTotalTime = totalTime + 5; // Increment time by 5 minutes (adjust as needed)
+      chrome.storage.local.set({ totalTime: newTotalTime });
+    });
+  }
+});
+
+function isSocialMediaWebsite(url) {
+  // Add logic to identify social media websites based on the URL
+  // Return true if it is a social media website, false otherwise
+  // Example implementation:
+  return url.includes('facebook.com') || url.includes('twitter.com');
+}

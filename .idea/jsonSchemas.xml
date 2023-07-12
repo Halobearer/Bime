@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JsonSchemaMappingsProjectConfiguration">
+    <state>
+      <map>
+        <entry key="webextension">
+          <value>
+            <SchemaInfo>
+              <option name="generatedName" value="New Schema" />
+              <option name="name" value="webextension" />
+              <option name="relativePathToSchema" value="../../OneDrive/Pictures/qoura/webextension.json" />
+              <option name="patterns">
+                <list>
+                  <Item>
+                    <option name="path" value="Chrome/manifest.json" />
+                  </Item>
+                </list>
+              </option>
+            </SchemaInfo>
+          </value>
+        </entry>
+      </map>
+    </state>
+  </component>
+</project>
