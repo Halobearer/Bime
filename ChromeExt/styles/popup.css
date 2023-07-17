@@ -41,3 +41,74 @@ body {
     font-weight: bold;
     animation: pulse 2s ease-in-out infinite;
 }
+
+.expop-body {
+    border: solid 2pt white;
+    width: 26rem;
+    height: 18rem;
+    margin-top: 4rem;
+}
+
+.block-list {
+    border: solid 2pt white;
+    width: 25rem;
+    height: 15rem;
+    margin-top: 1rem;
+    margin-left: 0.3rem;
+
+}
+
+input {
+    height: 1rem;
+    margin: 2%;
+    border: solid 2pt #fff;
+    border-radius: 6px;
+    outline: none;
+    background-color: purple;
+    color: white;
+    padding: 0.2rem;
+
+}
+
+.selector-text {
+    display: flex;
+    height: fit-content;
+    width: 25rem;
+    border: solid 2 tpt red;
+    color: white;
+    font-weight: 400;
+}
+
+.select-site {
+    margin-left: 4rem;
+}
+
+.from {
+    margin-left: 7rem;
+}
+
+.to {
+    margin-left: 6rem;
+}
+
+.selector-input {
+    display: flex;
+    height: fit-content;
+    width: 25rem;
+    border: solid 2 tpt red;
+}
+
+.plus-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    color: #888888;
+    box-shadow: 0 0 5px 2px rgba(218, 112, 214, 0);
+    border-radius: 40%;
+}
+
+.plus-icon:hover {
+    color: darkorchid;
+    box-shadow: 0 0 5px 2px rgba(218, 112, 214, 0.5);
+}
