@@ -9,30 +9,12 @@
     "webRequestBlocking",
     "<all_urls>"
   ],
-  "background": {
-    "scripts": [
-      "background.js"
-    ],
-    "persistent": false
-  },
-  "action": {
-    "default_popup": "popup.html",
+  "browser_action": {
     "default_title": "Time Tracker"
   },
   "icons": {
     "16": "assets/icon16.png",
     "48": "assets/icon48.png",
     "128": "assets/icon128.png"
-  },
-  "content_scripts": [
-    {
-      "matches": [
-        "*://*.facebook.com/*",
-        "*://*.twitter.com/*"
-      ],
-      "js": [
-        "Logic.js"
-      ]
-    }
-  ]
+  }
 }

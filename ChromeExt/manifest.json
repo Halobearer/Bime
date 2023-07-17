@@ -1,13 +1,31 @@
 {
   "manifest_version": 3,
-  "name": "Bime.",
+  "name": ".bime.",
   "version": "1.0.0",
+  "permissions": [
+    "tabs",
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/cropped-bime-logoPNG.png"
+    }
+  },
+  "icons": {
+    "128": "images/cropped-bime-logoPNG.png"
+  },
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
   "content_scripts": [
     {
       "matches": [
         "<all_urls>"
       ],
-      "js": ["Content.js"]
+      "js": [
+        "scripts/Block.js"
+      ]
     }
   ]
 }

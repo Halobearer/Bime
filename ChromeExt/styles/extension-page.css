@@ -1,0 +1,110 @@
+.side-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #888888;
+    margin: 0;
+}
+
+.side-bar button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: "Comic Sans MS", serif;
+    background-color: transparent;
+    border: none;
+}
+
+.Page-Body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.Time-form {
+    background-color: #888888;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.Row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.Hour-div,
+.Minute-div,
+.Seconds-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Hour-div label,
+.Minute-div label,
+.Seconds-div label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.Hour-Input,
+.Minute-Input,
+.Seconds-Input {
+    width: 70px;
+    height: 40px;
+    border: none;
+    background-color: lightgrey;
+    border-radius: 4px;
+    padding: 4px;
+    margin-right: 13px;
+    font-weight: bold;
+    font-family: "Comic Sans MS", serif;
+}
+
+.Button-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    padding-top: 20px;
+}
+
+.Button-row button {
+    margin: 0 20px;
+    border-radius: 4px;
+    height: 30px;
+    font-family: "Comic Sans MS", serif;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.Cancel-Btn {
+    background-color: inherit;
+    width: 59px;
+    border-color: dimgrey;
+}
+
+.Save-Btn {
+    background-color: rebeccapurple;
+    width: 59px;
+}
+
+.Countdown-Text {
+    padding-left: 100px;
+    font-weight: bold;
+    font-family: "Comic Sans MS", serif;
+}
+
+/*:root {*/
+/*    --my-color: red;*/
+/*}*/
+/*.my-element{*/
+/*    color: var(--my-color);*/
+/*    */
+/*}*/

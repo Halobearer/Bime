@@ -254,7 +254,7 @@ const loadLottieAnimation = () => {
     animationContainer.id = 'animation-container';
     document.body.appendChild(animationContainer);
 
-    const animationData = require('./animations/404.json');
+    const animationData = require('../animations/404.json');
 
 
     const animate = lottie.loadAnimation({
@@ -282,6 +282,6 @@ switch (window.location.hostname) {//if window.location.hostname is:
         break;
     case "www.netflix.com":
         document.head.innerHTML = generateStyles();
-        document.body.innerHTML = generateHTML404("YOUTUBE");
+        document.body.innerHTML = generateHTML404("NETFLIX");
         break;
 }

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bime Time</title>
+    <link rel="stylesheet" type="text/css" href="styles/extension-page.css">
+    <script src="scripts/extension-page.js"></script>
+</head>
+<body>
+
+<div class="side-bar">
+    <button class="Chart-Btn">Charts</button>
+    <button class="Time-Btn">Set Limits</button>
+    <button class="Settings-Btn">Settings</button>
+    <button class="Bime-Btn">Bime</button>
+</div>
+
+<div class="Page-Body">
+
+    <form class="Time-form">
+        <div class="Row">
+            <div class="Hour-div">
+                <label for="hour">Hours</label>
+                <input id="hour" type="number" min="0" max="60" autocomplete="off" class="Hour-Input">
+            </div>
+
+            <div class="Minute-div">
+                <label for="minute">Minutes</label>
+                <input id="minute" type="number" min="0" max="60" autocomplete="off" class="Minute-Input">
+            </div>
+
+            <div class="Seconds-div">
+                <label for="seconds">Seconds</label>
+                <input id="seconds" type="number" min="0" max="60" autocomplete="off" class="Seconds-Input">
+            </div>
+        </div>
+
+        <div class="Button-row">
+            <button class="Countdown-Btn" id="countdown-button">Start Countdown</button>
+            <div class="Countdown-Text" id="countdown-text"></div>
+            <button class="Cancel-Btn">Cancel</button>
+            <button class="Save-Btn">Save</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

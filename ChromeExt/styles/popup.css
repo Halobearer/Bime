@@ -1,0 +1,43 @@
+body {
+    min-width: 420px;
+    min-height: 370px;
+    background-color: rgb(52, 52, 52);
+}
+
+.icons-div {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+}
+
+.clock-icon,
+.settings-icon,
+.chart-icon {
+    width: 24px;
+    height: 23px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    color: #888;
+    box-shadow: 0 0 5px 2px rgba(218, 112, 214, 0);
+    border-radius: 40%;
+}
+
+.clock-icon:hover,
+.settings-icon:hover,
+.chart-icon:hover {
+    color: darkorchid;
+    box-shadow: 0 0 5px 2px rgba(218, 112, 214, 0.5);
+}
+
+.margin-right {
+    margin-right: 15px;
+}
+
+.Bime-text {
+    position: absolute;
+    top: -22px;
+    left: -290px;
+    color: #888888;
+    font-weight: bold;
+    animation: pulse 2s ease-in-out infinite;
+}
