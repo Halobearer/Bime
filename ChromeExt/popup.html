@@ -4,6 +4,7 @@
     <title>Popup</title>
     <link rel="stylesheet" type="text/css" href="styles/popup.css">
     <script src="scripts/popup.js"></script>
+    <script src="scripts/matchAlgorithm.js"></script>
 </head>
 <body>
 <div class="Popup-Main">
@@ -39,14 +40,15 @@
         <div class="block-list">
             <div class="selector">
                 <div class="selector-text">
-                    <p class="select-site">select site</p>
-                    <p class="from">from</p>
-                    <p class="to">to</p>
+                    <p class="select-site" value="jamesking">select site</p>
+                    <p class="from" value="10:32">from</p>
+                    <p class="to" value="10:35">to</p>
                 </div>
                 <div class="selector-input">
                     <input type="text" placeholder="select site to allow" autocomplete="off" class="host-input">
+                    <div id="hostname-icon"></div>
                     <input type="time" autocomplete="off">
-                    <input type="time" autocomplete="off">
+                    <input type="time" autocomplete="off" class="To">
                 </div>
             </div>
         </div>
