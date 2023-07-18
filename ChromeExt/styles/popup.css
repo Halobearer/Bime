@@ -1,7 +1,11 @@
 body {
     min-width: 420px;
     min-height: 370px;
-    background-color: rgb(52, 52, 52);
+    /*background-color: rgb(0, 0, 0, 0.37);*/
+    background-color: dimgrey;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+
 }
 
 .icons-div {
@@ -17,7 +21,7 @@ body {
     height: 23px;
     cursor: pointer;
     transition: color 0.3s ease;
-    color: #888;
+    color: black;
     box-shadow: 0 0 5px 2px rgba(218, 112, 214, 0);
     border-radius: 40%;
 }
@@ -43,14 +47,13 @@ body {
 }
 
 .expop-body {
-    border: solid 2pt white;
     width: 26rem;
     height: 18rem;
     margin-top: 4rem;
 }
 
+
 .block-list {
-    border: solid 2pt white;
     width: 25rem;
     height: 15rem;
     margin-top: 1rem;
@@ -64,9 +67,10 @@ input {
     border: solid 2pt #fff;
     border-radius: 6px;
     outline: none;
-    background-color: purple;
+    background-color: transparent;
     color: white;
     padding: 0.2rem;
+    font-family: "Comic Sans MS";
 
 }
 
@@ -77,6 +81,7 @@ input {
     border: solid 2 tpt red;
     color: white;
     font-weight: 400;
+    font-family: "Comic Sans MS";
 }
 
 .select-site {
@@ -100,15 +105,132 @@ input {
 
 .plus-icon {
     width: 24px;
-    height: 24px;
+    height: 30px;
     cursor: pointer;
     transition: color 0.3s ease;
-    color: #888888;
-    box-shadow: 0 0 5px 2px rgba(218, 112, 214, 0);
+    color: black;
     border-radius: 40%;
+    position: absolute;
+    bottom: -374px;
+    left: 86%;
+    transform: translateX(-50%);
+    /*top: -120px;*/
+    /*width: 24px;*/
+    /*height: 24px;*/
+    /*cursor: pointer;*/
+    /*transition: color 0.3s ease;*/
+    /*color: black;*/
+    /*box-shadow: 0 0 5px 2px rgba(218, 112, 214, 0);*/
+    /*border-radius: 40%;*/
+    /*top: 200rem;*/
 }
 
 .plus-icon:hover {
     color: darkorchid;
     box-shadow: 0 0 5px 2px rgba(218, 112, 214, 0.5);
+}
+
+.block-list {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.host-input {
+    width: 148px;
+}
+
+.usage-button {
+    height: 2.5rem;
+    margin-right: 8px;
+    margin-left: 1rem;
+    margin-top: 2rem;
+    border-radius: 9px;
+    cursor: pointer;
+    border: none;
+    background-color: darkorchid;
+    font-family: "Comic Sans MS";
+    transition: transform 0.3s ease;
+}
+
+.usage-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 5px 2px rgba(218, 112, 214, 0.5);
+}
+
+
+.Start {
+    height: 2.5rem;
+    margin-right: 8px;
+    margin-left: 1rem;
+    border-radius: 9px;
+    width: 5.6rem;
+    cursor: pointer;
+    border: none;
+    font-family: "Comic Sans MS";
+    transition: transform 0.3s ease;
+}
+
+.Start:hover {
+    font-size: 16px;
+    box-shadow: 0 0 5px 2px rgba(218, 112, 214, 0.5);
+    transform: scale(1.1);
+}
+
+::-webkit-scrollbar {
+    width: 2px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f100;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #55555500;
+}
+
+.glitter-button {
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 20px;
+    font-family: "Comic Sans MS";
+}
+
+.glitter-button:hover {
+    background-color: darkorchid;
+    border-radius: 9px;
+}
+
+.glitter-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 25%, rgba(255, 255, 255, 0) 50%);
+    transform: skewX(-30deg);
+    transition: left 0.5s;
+    pointer-events: none;
+}
+
+.glitter-button:hover::before {
+    left: 100%;
+    animation: glitter-animation 2s linear infinite;
+}
+
+@keyframes glitter-animation {
+    0% {
+        transform: skewX(-30deg) translateX(-100%);
+    }
+    100% {
+        transform: skewX(-30deg) translateX(100%);
+    }
 }

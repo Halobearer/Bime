@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const selectorInput = document.createElement('div');
         selectorInput.classList.add('selector-input');
         selectorInput.innerHTML = `
-        <input type="text" placeholder="Select site to allow" autocomplete="off">
+        <input type="text" placeholder="Select site to allow" autocomplete="off" style="width: 148px;">
 		<input type="time" autocomplete="off">
 		<input type="time" autocomplete="off">`;
 
