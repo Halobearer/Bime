@@ -176,6 +176,19 @@ input {
     transform: scale(1.1);
 }
 
+#hostname-icon {
+    width: 24px;
+    height: 14px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 28.2%;
+    right: 59.2%;
+    transform: translateY(-50%);
+    display: none;
+}
+
 ::-webkit-scrollbar {
     width: 2px;
 }
