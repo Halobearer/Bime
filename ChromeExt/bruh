@@ -15,3 +15,25 @@ function isSocialMediaWebsite(url) {
   // Example implementation:
   return url.includes('facebook.com') || url.includes('twitter.com');
 }
+====================================================================================================================================
+------------------------------------------------------------------------------------------------------------------------------
+
+Yes, your understanding is on the right track. To achieve the functionality you described,
+the website you encountered likely used a combination of techniques:
+
+1. Storing website hostnames and icons: They might have maintained a data structure, such as an array or object,
+that associates website hostnames with their corresponding icons.
+This data structure could be stored in a separate JavaScript file or fetched from a server-side API.
+
+2. Matching algorithm: When you input a hostname, they probably use a matching algorithm to find a corresponding icon
+based on the input. This could involve comparing the input against the stored hostnames and returning the associated icon URL.
+
+3. Rendering the icon: Once the matching algorithm identifies the icon URL,
+they likely inject the icon element dynamically into the DOM, such as creating an `<img>`
+element or utilizing CSS background images. The icon element would then be positioned or displayed appropriately,
+such as on the right side of the input field.
+
+It's important to note that the exact implementation details may vary depending on the specific website or application.
+They might use additional technologies or frameworks to optimize the performance or enhance the user experience.
+However, the basic concept involves associating hostnames with icons and dynamically displaying the correct icon based
+on user input.

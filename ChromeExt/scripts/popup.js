@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
         selectorText.innerHTML = `
         <p class="select-site">select site</p>
 		<p class="from">from</p>
-		<p class="to">to</p>`;
+		<p class="to">to</p>`
 
         const selectorInput = document.createElement('div');
         selectorInput.classList.add('selector-input');
@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function () {
         <input type="text" placeholder="Select site to allow" autocomplete="off" style="width: 148px;">
 		<input type="time" autocomplete="off">
 		<input type="time" autocomplete="off">`;
-
 
         selector.appendChild(selectorText);
         selector.appendChild(selectorInput);
@@ -37,4 +36,31 @@ document.addEventListener('DOMContentLoaded', function () {
     clockIcon.addEventListener('click', function () {
         chrome.tabs.create({url: 'extension-page.html'});
     });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const activateBimeButton = document.querySelector('.Start');
+
+    activateBimeButton.addEventListener('click', function () {
+        activateBime();
+    });
+
+    function activateBime() {
+        const selectors = document.querySelectorAll('.selector');
+
+        selectors.forEach((selector) => {
+            const siteInput = selector.querySelector('input[type="text"]');
+            const fromInput = selector.querySelector('input[type="time"]');
+            const toInput = selector.querySelector('.To');
+
+            const site = siteInput ? siteInput.value : '';
+            const fromTime = fromInput ? fromInput.value : '';
+            const toTime = toInput ? toInput.value : '';
+
+            console.log(`Site: ${site}`);
+            console.log(`From: ${fromTime}`);
+            console.log(`To: ${toTime}`);
+        });
+    }
+
 });
