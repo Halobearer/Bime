@@ -1,0 +1,20 @@
+<input type="time" id="timeInput"/>
+<button onclick="logInputValues()">Log Input Values</button>
+
+<script>
+function logInputValues() {
+  var timeInput = document.getElementById("timeInput");
+  var timeValue = timeInput.value;
+
+  console.log(timeValue)
+
+  // Extract individual values
+  var hours = timeValue.split(":")[0];
+  var minutes = timeValue.split(":")[1];
+  var ampm = timeValue.slice(-2);
+
+  console.log("Hours:", hours);
+  console.log("Minutes:", minutes);
+  console.log("AM/PM:", ampm);
+}
+</script>
