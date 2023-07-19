@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
         selectors.forEach((selector) => {
             const siteInput = selector.querySelector('input[type="text"]');
             const fromInput = selector.querySelector('input[type="time"]');
-            const toInput = selector.querySelector('.To');
+            const toInput = selector.querySelector('.To input[type="time"]');
 
             const site = siteInput ? siteInput.value : '';
             const fromTime = fromInput ? fromInput.value : '';
