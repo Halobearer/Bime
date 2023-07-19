@@ -24,7 +24,7 @@
         "<all_urls>"
       ],
       "js": [
-        "scripts/Block.js"
+        "scripts/popup.js"
       ]
     }
   ]
