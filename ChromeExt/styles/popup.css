@@ -1,12 +1,151 @@
-body {
-    min-width: 420px;
-    min-height: 370px;
-    /*background-color: rgb(0, 0, 0, 0.37);*/
-    background-color: dimgrey;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
+/*body {*/
+/*    min-width: 420px;*/
+/*    min-height: 370px;*/
+/*    !*background-color: rgb(0, 0, 0, 0.37);*!*/
+/*    background-color: dimgrey;*/
+/*    border-bottom-left-radius: 12px;*/
+/*    border-bottom-right-radius: 12px;*/
 
+/*}*/
+
+body {
+    font-family: "Comic Sans MS";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 380px;
+    width: 430px;
+    margin: 0;
+    background-color: dimgrey;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
+
+.popup {
+    /*padding: 20px;*/
+    /*border-radius: 10px;*/
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);*/
+    position: relative;
+    top: 20%;
+    background-color: dimgrey;
+}
+
+.hostname-input {
+    width: 346px;
+    background-color: dimgrey;
+    top: -23px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hostname-input input[type="text"] {
+    height: 36px;
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #888888;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.hostname-input input[type="text"]:focus {
+    border-color: darkorchid;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.time-inputs {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    top: -6px;
+    position: relative;
+}
+
+.time-inputs input[type="time"] {
+    flex: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.time-inputs input[type="time"]:focus {
+    border-color: darkorchid;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.save-button {
+    display: block;
+    margin-top: 20px;
+    padding: 8px 15px;
+    background-color: darkorchid;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    position: relative;
+    left: 267px;
+}
+
+.save-button:hover {
+    font-family: Impact;
+    background-color: whitesmoke;
+    transform: scale(1.1);
+}
+
+.curved-box {
+    position: relative;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: darkorchid;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+}
+
+.website-info {
+    display: flex;
+    align-items: center;
+}
+
+#curved-icon {
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 10px;
+}
+
+.edit-delete-icons {
+    display: flex;
+    align-items: center;
+}
+
+.edit-icon,
+.delete-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.edit-icon:hover,
+.delete-icon:hover {
+    fill: white;
+}
+
+.edit-delete-icons {
+    display: none;
+}
+
 
 .icons-div {
     position: absolute;
@@ -40,17 +179,17 @@ body {
 .Bime-text {
     position: absolute;
     top: -22px;
-    left: -290px;
-    color: #888888;
+    left: -279px;
+    color: black;
     font-weight: bold;
     animation: pulse 2s ease-in-out infinite;
 }
 
-.expop-body {
-    width: 26rem;
-    height: 18rem;
-    margin-top: 4rem;
-}
+/*.expop-body {*/
+/*    width: 26rem;*/
+/*    height: 18rem;*/
+/*    margin-top: 4rem;*/
+/*}*/
 
 
 .block-list {
@@ -74,15 +213,15 @@ input {
 
 }
 
-.selector-text {
-    display: flex;
-    height: fit-content;
-    width: 25rem;
-    border: solid 2 tpt red;
-    color: white;
-    font-weight: 400;
-    font-family: "Comic Sans MS";
-}
+/*.selector-text {*/
+/*    display: flex;*/
+/*    height: fit-content;*/
+/*    width: 25rem;*/
+/*    border: solid 2 tpt red;*/
+/*    color: white;*/
+/*    font-weight: 400;*/
+/*    font-family: "Comic Sans MS";*/
+/*}*/
 
 .select-site {
     margin-left: 4rem;
@@ -177,14 +316,14 @@ input {
 }
 
 #hostname-icon {
-    width: 24px;
-    height: 14px;
+    width: 32px;
+    height: 25px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     position: absolute;
-    top: 28.2%;
-    right: 59.2%;
+    top: 50.2%;
+    right: 6.2%;
     transform: translateY(-50%);
     display: none;
 }
