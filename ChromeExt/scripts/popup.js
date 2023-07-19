@@ -45,6 +45,9 @@ document.addEventListener('DOMContentLoaded', function () {
         activateBime();
     });
 
+
+
+
     function activateBime() {
         const selectors = document.querySelectorAll('.selector');
 
@@ -53,14 +56,76 @@ document.addEventListener('DOMContentLoaded', function () {
             const fromInput = selector.querySelector('input[type="time"]');
             const toInput = selector.querySelector('.To');
 
+            
+
             const site = siteInput ? siteInput.value : '';
             const fromTime = fromInput ? fromInput.value : '';
             const toTime = toInput ? toInput.value : '';
+           
+          
 
             console.log(`Site: ${site}`);
             console.log(`From: ${fromTime}`);
             console.log(`To: ${toTime}`);
-        });
+           
+
+           
+         
+
+            const timer =(startTime, endTime)=> {
+
+                const timeDiff = endTime - startTime;
+              
+                let remainingTime = Math.floor(timeDiff / 1000);
+                console.log(`Countdown: ${remainingTime} seconds`);
+              
+                const interval = setInterval(() => {
+                  remainingTime--;
+              
+                  if (remainingTime <= 0) {
+                    clearInterval(interval);
+                    console.log("Countdown completed!");
+                    return;
+                  }
+                  console.log(`Countdown: ${remainingTime} seconds`);
+            
+                }, 1000);
+              }
+               
+
+
+            const timeInputstart = fromTime;
+            const timeinputstop = toTime;
+            
+          
+            const startTime = new Date(); 
+            const [hours, minutes] = timeInputstart.split(":");
+            startTime.setHours(hours);
+            startTime.setMinutes(minutes);
+          
+          
+            const endTime = new Date(); 
+            const [endhours, endminutes] = timeinputstop.split(":");
+            endTime.setHours(endhours)
+            endTime.setMinutes(endminutes)
+           
+        
+            
+        
+
+        const checker =  setInterval(()=>{
+            const currentTime = new Date();
+            if(currentTime.getHours() === startTime.getHours() && currentTime.getMinutes() === startTime.getMinutes()){
+                clearInterval(checker);
+                console.log('i have started countdown....');
+                   timer(startTime, endTime)
+              } 
+              console.log('im checking ....');   
+         },1000)
+
+
+           
+    });
     }
 
 });
