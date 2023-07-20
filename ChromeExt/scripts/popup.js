@@ -266,12 +266,48 @@ const loadLottieAnimation = () => {
     });
 };
 
+document.addEventListener('DOMContentLoaded', function () {
+    const websiteMatch = document.querySelector('.host-text');
+    const saveButton = document.querySelector('.save-button');
+    const inputContainer = document.querySelector('.popup');
+    const curvedBox = document.querySelector('.curved-box');
+    const curvedIcon = document.getElementById('curved-icon');
+    const curvedText = document.getElementById('curved-text');
+    const editDeleteIcons = document.querySelector('.edit-delete-icons');
 
+    saveButton.addEventListener('click', function () {
+        const hostname = websiteMatch.value;
+        const normalizedHostname = normalizeHostname(hostname);
+        const icon = getIconForHostname(normalizedHostname);
 
+        if (icon) {
+            curvedIcon.style.backgroundImage = `url(${chrome.runtime.getURL(icon)})`;
+        }
 
+        curvedText.textContent = normalizedHostname;
+        inputContainer.style.display = 'none';
+        curvedBox.style.display = 'flex';
+        editDeleteIcons.style.display = 'flex';
+    });
 
+    function normalizeHostname(hostname) {
+        const prefix = 'www.';
+        if (hostname.startsWith(prefix)) {
+            return hostname;
+        }
+        return prefix + hostname;
+    }
 
+    function getIconForHostname(hostname) {
+        for (let i = 0; i < websiteData.length; i++) {
+            if (websiteData[i].hostname === hostname) {
+                return websiteData[i].icon;
+            }
+        }
+        return null;
+    }
 
+});
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -314,135 +350,110 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    const activateBimeButton = document.querySelector('.Start');
-
-    activateBimeButton.addEventListener('click', function () {
-        activateBime();
-    });
-
-
-
-
-    function activateBime() {
-        const selectors = document.querySelectorAll('.selector');
-
-        selectors.forEach((selector) => {
-            const siteInput = selector.querySelector('input[type="text"]');
-            const fromInput = selector.querySelector('.tFrom');
-            const toInput = selector.querySelector('.tTo');
-
-
-
-            const site = siteInput ? siteInput.value : '';
-            const fromTime = fromInput ? fromInput.value : '';
-            const toTime = toInput ? toInput.value : '';
-           
-          
-
-            console.log(`Site: ${site}`);
-            console.log(`From: ${fromTime}`);
-            console.log(`To: ${toTime}`);
-           
-
-           
-         
-
-            const timer =(domain, startTime, endTime)=> {
-
-                const timeDiff = endTime - startTime;
-                let remainingTime = Math.floor(timeDiff / 1000);
-                console.log(`Countdown:-> ${remainingTime} seconds`);
-
-                const activeDomians = [ 
-
-                ]
-
-                const blockedDomains = [
-                  
-                ]
-                console.log( 'this is blocked domain --> ',blockedDomains);
-                blockedDomains.push({ hostname: `${domain}`, name: `${domain}` })
-
-                  for (const domain of blockedDomains) {
-                    console.log(location.href)
-                    console.log(domain.hostname)
-                    console.log(domain.name)
-
-                    if (window.location.hostname === domain.hostname) {
-  
-                      document.head.innerHTML = generateStyles();
-                      document.body.innerHTML = generateHTML404(window.location.hostname);
-                      break;
-                    }
-
-                  }
-
-
-                  function removeFromSourceAndPush(source, target, element) {
-                    let index = source.indexOf(element);
-                    if (index !== -1) {
-                      source.splice(index, 1); 
-                      target.push(element); 
-                    }
-                  }
-              
-                const interval = setInterval(() => {
-                  remainingTime--;
-                    for (let i = blockedDomains.length - 1; i >= 0; i--) {
-                        let element = blockedDomains[i];
-                        if (remainingTime <= 0) {
-                            removeFromSourceAndPush(blockedDomains, activeDomians, element);
-                            clearInterval(interval);
-                            console.log(blockedDomains);
-                            console.log("Countdown completed!");
-                           
-                        }
-                        console.log(`Countdown: ${remainingTime} seconds`);
-                        return;
-                      }
-                }, 1000);
-              }
-               
-
-
-            const timeInputstart = fromTime;
-            const timeinputstop = toTime;
-            
-          
-            const startTime = new Date(); 
-            const [hours, minutes] = timeInputstart.split(":");
-            startTime.setHours(hours);
-            startTime.setMinutes(minutes);
-          
-          
-            const endTime = new Date(); 
-            const [endhours, endminutes] = timeinputstop.split(":");
-            endTime.setHours(endhours)
-            endTime.setMinutes(endminutes)
-           
-
-            const checker =  setInterval(()=>{
-            const currentTime = new Date();
-            if(currentTime.getHours() === startTime.getHours() && currentTime.getMinutes() === startTime.getMinutes()){
-                clearInterval(checker);
-                console.log('i have started countdown....');
-                   timer(site,startTime, endTime)
-              } 
-              console.log('im checking ....');   
-         },1000)    
-    });
-    }
-
-
-   
-
-
-  
-
- 
-  
-
-
-
-});
+// document.addEventListener('DOMContentLoaded', function () {
+//     const activateBimeButton = document.querySelector('.Start');
+//
+//     activateBimeButton.addEventListener('click', function () {
+//         activateBime();
+//     });
+//
+//
+//     function activateBime() {
+//         const selectors = document.querySelectorAll('.selector');
+//
+//         selectors.forEach((selector) => {
+//             const siteInput = selector.querySelector('input[type="text"]');
+//             const fromInput = selector.querySelector('input[type="time"]');
+//             const toInput = selector.querySelector('.To input[type="time"]');
+//
+//
+//             const site = siteInput ? siteInput.value : '';
+//             const fromTime = fromInput ? fromInput.value : '';
+//             const toTime = toInput ? toInput.value : '';
+//
+//
+//             console.log(`Site: ${site}`);
+//             console.log(`From: ${fromTime}`);
+//             console.log(`To: ${toTime}`);
+//
+//
+//             const timer = (domain, startTime, endTime) => {
+//
+//                 const timeDiff = endTime - startTime;
+//                 let remainingTime = Math.floor(timeDiff / 1000);
+//                 console.log(`Countdown:-> ${remainingTime} seconds`);
+//
+//                 const activeDomians = []
+//
+//                 const blockedDomains = []
+//                 console.log('this is blocked domain --> ', blockedDomains);
+//                 blockedDomains.push({hostname: `${domain}`, name: `${domain}`})
+//
+//                 for (const domain of blockedDomains) {
+//                     console.log(location.href)
+//                     console.log(domain.hostname)
+//                     console.log(domain.name)
+//
+//                     if (window.location.hostname === domain.hostname) {
+//
+//                         document.head.innerHTML = generateStyles();
+//                         document.body.innerHTML = generateHTML404(window.location.hostname);
+//                         break;
+//                     }
+//
+//                 }
+//
+//
+//                 function removeFromSourceAndPush(source, target, element) {
+//                     let index = source.indexOf(element);
+//                     if (index !== -1) {
+//                         source.splice(index, 1);
+//                         target.push(element);
+//                     }
+//                 }
+//
+//                 const interval = setInterval(() => {
+//                     remainingTime--;
+//                     for (let i = blockedDomains.length - 1; i >= 0; i--) {
+//                         let element = blockedDomains[i];
+//                         if (remainingTime <= 0) {
+//                             removeFromSourceAndPush(blockedDomains, activeDomians, element);
+//                             clearInterval(interval);
+//                             console.log(blockedDomains);
+//                             console.log("Countdown completed!");
+//
+//                         }
+//                         console.log(`Countdown: ${remainingTime} seconds`);
+//                         return;
+//                     }
+//                 }, 1000);
+//             }
+//
+//
+//             const timeInputstart = fromTime;
+//             const timeinputstop = toTime;
+//
+//
+//             const startTime = new Date();
+//             const [hours, minutes] = timeInputstart.split(":");
+//             startTime.setHours(hours);
+//             startTime.setMinutes(minutes);
+//
+//
+//             const endTime = new Date();
+//             const [endhours, endminutes] = timeinputstop.split(":");
+//             endTime.setHours(endhours)
+//             endTime.setMinutes(endminutes)
+//
+//
+//             const checker = setInterval(() => {
+//                 const currentTime = new Date();
+//                 if (currentTime.getHours() === startTime.getHours() && currentTime.getMinutes() === startTime.getMinutes()) {
+//                     clearInterval(checker);
+//                     console.log('i have started countdown....');
+//                     timer(site, startTime, endTime)
+//                 }
+//                 console.log('im checking ....');
+//             }, 1000)
+//         });
+//     }
