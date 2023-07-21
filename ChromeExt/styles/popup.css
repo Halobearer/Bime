@@ -7,7 +7,14 @@ body {
     width: 430px;
     margin: 0;
     background-color: dimgrey;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+#From {
+    position: relative;
+    right: 25px;
+    /*color: #888888;*/
+    /*font-size: 10px;*/
 }
 
 .popup {
@@ -45,8 +52,44 @@ body {
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     top: -6px;
     position: relative;
+}
+
+.time-label {
+    position: absolute;
+    top: -15px;
+    left: 18px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #2c2c2c;
+    animation: glowing 1.5s ease-in-out infinite;
+}
+
+.time-label2 {
+    position: absolute;
+    top: -15px;
+    left: 200px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #2c2c2c;
+    animation: glowing 1.5s ease-in-out infinite;
+}
+
+@keyframes glowing {
+    0% {
+        opacity: 0.7%;
+        text-shadow: 0 0 8px #00ff00;
+    }
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 16px #00ff00;
+    }
+    100% {
+        opacity: 0.7%;
+        text-shadow: 0 0 8px #00ff00;
+    }
 }
 
 .time-inputs input[type="time"] {
