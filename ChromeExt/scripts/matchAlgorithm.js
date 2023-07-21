@@ -20,9 +20,9 @@ const websiteData = [
     {hostname: "www.live.com", icon: "icons/outlook-icon.png"},
     {hostname: "www.docomo.ne.jp", icon: "icons/docomo-icon.ico"},
     {hostname: "www.linkedin.com", icon: "icons/linkedin-icon.png"},
-    {hostname: "www.openai.com", icon: ""},
+    {hostname: "www.openai.com", icon: "icons/openai-icon.png"},
     {hostname: "www.reddit.com", icon: ""},
-    {hostname: "www.netflix.com", icon: ""},
+    {hostname: "www.netflix.com", icon: "icons/netflix-icon.png"},
     {hostname: "www.dzen.ru", icon: ""},
     {hostname: "www.office.com", icon: ""},
     {hostname: "www.vk.com", icon: ""},
@@ -31,6 +31,8 @@ const websiteData = [
     {hostname: "www.xhamster.com", icon: ""},
     {hostname: "www.naver.com", icon: ""},
     {hostname: "www.turbopages.com", icon: ""},
+    {hostname: "www.semicolon.africa", icon: "icons/semicolon-icon.png"},
+    {hostname: "www.chat.openai.com", icon: "icons/chatopenai-icon.png"}
 
 ];
 document.addEventListener('DOMContentLoaded', function () {
