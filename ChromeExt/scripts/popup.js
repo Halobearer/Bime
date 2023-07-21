@@ -93,6 +93,7 @@ hr:after {
   background: #33cc99;
 }
 
+
 .cloud {
   width: 350px;
   height: 120px;
@@ -187,6 +188,7 @@ hr:after {
   -moz-transform: scale(0.6);
   transform: scale(0.6);
   opacity: 0.8;
+
 
   -webkit-animation: moveclouds 25s linear infinite;
   -moz-animation: moveclouds 25s linear infinite;
@@ -306,12 +308,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
       const hostname = websiteMatch.value;
       const normalizedHostname = normalizeHostname(hostname);
-      const icon = getIconForHostname(
-normalizedHostname);
+      const icon = getIconForHostname(normalizedHostname);
 
       if (icon) {
-          curvedIcon.style.backgroundImage = `url(${chrome.runtime.getURL(
-icon)})`;
+          curvedIcon.style.backgroundImage = `url(${chrome.runtime.getURL(icon)})`;
       }
 
       curvedText.textContent = normalizedHostname;
@@ -396,3 +396,4 @@ switch (window.location.hostname) {
     document.body.innerHTML = generateHTML404("SPOTIFY");
     break;
 }
+

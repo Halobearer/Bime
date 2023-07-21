@@ -71,4 +71,8 @@ function normalizeHostname(hostname) {
         return hostname;
     }
     return prefix + hostname;
+
 }
+
+
+
