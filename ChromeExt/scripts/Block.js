@@ -267,21 +267,174 @@
 // };
 
 
-// //BLOCK LOGIC
 
-// //Logic to display the GET BACK TO WORK MESSAGE [document.body.innerHTML ="<button></button>"]
 
-// switch (window.location.hostname) {//if window.location.hostname is:
-//     case "www.whats.com":
-//         document.head.innerHTML = generateStyles();
-//         document.body.innerHTML = generateHTML404("YOUTUBE");
-//         break;
-//     case "www.facebook.com":
-//         document.head.innerHTML = generateStyles(); 
-//         document.body.innerHTML = generateHTML404("FACEBOOK");
-//         break;
-//     case "www.netflix.com":
-//         document.head.innerHTML = generateStyles();
-//         document.body.innerHTML = generateHTML404("NETFLIX");
-//         break;
+
+
+
+// document.addEventListener('DOMContentLoaded', function () {
+//     const plusIcon = document.querySelector('.plus-icon');
+//     const blockList = document.querySelector('.block-list');
+
+//     plusIcon.addEventListener('click', function () {
+//         addInputSection();
+//     });
+
+//     function addInputSection() {
+//         const selector = document.createElement('div');
+//         selector.classList.add('selector');
+
+//         const selectorText = document.createElement('div');
+//         selectorText.classList.add('selector-text');
+//         selectorText.innerHTML = `
+//         <p class="select-site">select site</p>
+// 		<p class="from">from</p>
+// 		<p class="to">to</p>`
+
+//         const selectorInput = document.createElement('div');
+//         selectorInput.classList.add('selector-input');
+//         selectorInput.innerHTML = `
+//         <input type="text" placeholder="Select site to allow" autocomplete="off" style="width: 148px;">
+// 		<input type="time" autocomplete="off" class = 'tFrom'>
+// 		<input type="time" autocomplete="off" class = 'tTo'>`;
+
+//         selector.appendChild(selectorText);
+//         selector.appendChild(selectorInput);
+//         blockList.appendChild(selector);
+//     }
+// })
+
+
+
+
+
+
+// let blocklist = [];
+// let activelist = [];
+
+
+// document.addEventListener('DOMContentLoaded', function () {
+//   const activateBimeButton = document.querySelector('.Start');
+
+//   activateBimeButton.addEventListener('click', function () {
+//       activateBime();
+//   })
+// });
+
+// const activateBime = () => {
+//   const domainInput = document.getElementById('domainInput').value;
+//   const selectors = document.querySelectorAll('.selector');
+
+//   selectors.forEach((selector) => {
+//       const siteInput = selector.querySelector('input[type="text"]');
+//       const fromInput = selector.querySelector('.tFrom');
+//       const toInput = selector.querySelector('.tTo');
+
+//       const site = siteInput ? siteInput.value : '';
+//       const fromTime = fromInput ? fromInput.value : '';
+//       const toTime = toInput ? toInput.value : '';
+
+//       if (!blocklist.includes(site)) {
+//         blocklist.push(site); // Add the site to the blocklist
+//         console.log('Site added to blocklist:', site);
+//         console.log(blocklist);
+//       }
+
+
+//       console.log(`Site: ${site}`);
+//       console.log(`From: ${fromTime}`);
+//       console.log(`To: ${toTime}`);
+//       console.log('domain-->',domainInput);
+//       console.log('host-->', window.location.hostname);
+
+
+      
+//       const timeInputstart = fromTime;
+//       const timeinputstop = toTime;
+
+
+
+//       const startTime = new Date(); 
+//       const [hours, minutes] = timeInputstart.split(":");
+//       startTime.setHours(hours);
+//       startTime.setMinutes(minutes);
+
+
+//       const endTime = new Date(); 
+//       const [endhours, endminutes] = timeinputstop.split(":");
+//       endTime.setHours(endhours)
+//       endTime.setMinutes(endminutes)
+
+
+//       const checker =  setInterval(()=>{
+//       const currentTime = new Date();
+//       if(currentTime.getHours() === startTime.getHours() && currentTime.getMinutes() === startTime.getMinutes()){
+//           clearInterval(checker);
+//           console.log('i have started countdown....');
+//             timer(site,startTime, endTime)
+//         } 
+//         console.log('domain still free ....');   
+//       },1000)     
+     
+//   })
 // }
+
+
+
+
+
+// const timer =(site, startTime, endTime)=> {
+
+//   const timeDiff = endTime - startTime;
+//   let remainingTime = Math.floor(timeDiff / 1000);
+//   console.log(`Countdown:-> ${remainingTime} seconds`);
+
+
+//   const url = new URL(window.location.href);
+
+
+
+
+//   const interval = setInterval(() => {
+//     remainingTime--;
+
+//     blocklist.forEach((website)=>{
+//       if (blocklist.includes(website) || url.hostname === website) {
+//           console.log('i don block am ooooooooo');
+//           console.log(website);
+//         // console.log('this is the web host-->', url.hostname);
+//         // console.log('i wanna block-->', site);
+//         // console.log('site blocked....');
+//         // document.head.innerHTML = generateStyles();
+//         // document.body.innerHTML = generateHTML404("JAMES");
+//     }
+    
+//     })
+    
+ 
+//           if (remainingTime <= 0) {
+//               clearInterval(interval);
+//               console.log("Countdown completed!");   
+//               blocklist = blocklist.filter(item => item !== site);
+//               activelist.push(site);
+//               console.log('Site added to activelist:', site); 
+//               console.log(activelist); 
+//           }
+
+//           console.log(`Countdown: ${remainingTime} seconds`);
+//           return;
+//         } , 1000)
+
+// };
+
+
+
+
+
+
+
+
+
+
+
+ 
