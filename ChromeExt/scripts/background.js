@@ -3,11 +3,11 @@
 
 let blocklist = [];
 let activelist = [];
+let callForDisplay = false;
 
 
 const activateBime = (dom, stat, stot) => {
    
-
       if (!blocklist.includes(dom)) {
         blocklist.push(dom); 
         console.log('Site added to blocklist:', dom);
@@ -37,7 +37,7 @@ const activateBime = (dom, stat, stot) => {
       if(currentTime.getHours() === startTime.getHours() && currentTime.getMinutes() === startTime.getMinutes()){
           clearInterval(checker);
           console.log('i have started countdown....');
-            timer(dom,startTime, endTime)
+           timer(dom,startTime, endTime)  
         } 
         console.log('domain still free ....');   
       },1000) 
@@ -48,12 +48,11 @@ const activateBime = (dom, stat, stot) => {
 
 
 const blockSite = (site) => {
-
     chrome.declarativeNetRequest.updateDynamicRules({
-        removeRuleIds: [1], // Replace '1' with the actual rule ID you want to remove
+        removeRuleIds: [1], 
       }, () => {
         const blockRule = {
-          id: 1, // Replace '1' with a unique rule ID (must be an integer)
+          id: 1, 
           priority: 1,
           action: {
             type: 'block',
@@ -79,29 +78,29 @@ const blockSite = (site) => {
 
 
 const timer =(site, startTime, endTime)=> {
-
   const timeDiff = endTime - startTime;
   let remainingTime = Math.floor(timeDiff / 1000);
-
   console.log(`Countdown:-> ${remainingTime} seconds`);
+
 
 
   const interval = setInterval(() => {
     remainingTime--; 
-
-   
- 
             if (remainingTime <= 0) {
-              clearInterval(interval);
+            clearInterval(interval);
               console.log("Countdown completed!");   
               blocklist.forEach((doms)=>{
                 blockSite(doms);
+                callForDisplay = true
+                chrome.runtime.sendMessage({action: 'startdisplay', display: callForDisplay, disdom: doms}, (response)=>{
+                  console.log('response i received from popup display -->', response);
+                })
                })
               console.log('Site added to activelist:', site); 
               console.log(activelist); 
             }
 
-          console.log(`Countdown: ${remainingTime} seconds`);
+          console.log(`Countdown is: ${remainingTime} seconds`);
           return;
         } , 1000)
 
@@ -117,7 +116,8 @@ chrome.runtime.onMessage.addListener(function(message ,sender, sendResponse) {
     if (message.action === 'startFunction') {
          activateBime(userDomain, userStartTime, userStopTime)
          console.log('i received this from popup.js-->', userDomain, userStartTime, userStopTime)
-         sendResponse({userDomain, userStartTime, userStopTime})      
+         sendResponse({userDomain, userStartTime, userStopTime})  
+             
     return true;
     }
   });

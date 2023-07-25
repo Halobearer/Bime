@@ -187,6 +187,7 @@ body {
     color: black;
     font-weight: bold;
     animation: pulse 2s ease-in-out infinite;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 /*.expop-body {*/

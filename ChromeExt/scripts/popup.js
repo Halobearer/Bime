@@ -267,6 +267,12 @@ animationContainer);
   });
 };
 
+
+
+
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
   const websiteMatch = document.querySelector('.host-text');
   const saveButton = document.querySelector('.save-button');
@@ -300,18 +306,18 @@ document.addEventListener('DOMContentLoaded', function () {
       chrome.runtime.sendMessage({ action: 'startFunction', domain: host, starttime: From, stoptime: To}, (response)=>{
         console.log( 'response i received from background --> ',response);
       })
-      
-  
       })
+
+
+
 
       const hostname = websiteMatch.value;
       const normalizedHostname = normalizeHostname(hostname);
       const icon = getIconForHostname(
-normalizedHostname);
+      normalizedHostname);
 
       if (icon) {
-          curvedIcon.style.backgroundImage = `url(${chrome.runtime.getURL(
-icon)})`;
+          curvedIcon.style.backgroundImage = `url(${chrome.runtime.getURL( icon)})`;
       }
 
       curvedText.textContent = normalizedHostname;
@@ -367,32 +373,67 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+const overtakeWebBody = ()=>{
 
+  switch (window.location.hostname) {
+    case "www.youtube.com":
+      document.head.innerHTML = generateStyles();
+      document.body.innerHTML = generateHTML404("YOUTUBE");
+      break;
+    case "www.facebook.com":
+      document.head.innerHTML = generateStyles();
+      document.body.innerHTML = generateHTML404("FACEBOOK");
+      break;
+    case "www.netflix.com":
+      document.head.innerHTML = generateStyles();
+      document.body.innerHTML = generateHTML404("NETFLIX");
+      break;
+    case "www.roblox.com":
+      document.head.innerHTML = generateStyles();
+      document.body.innerHTML = generateHTML404("ROBLOX");
+      break;
+    case "discord.com":
+      document.head.innerHTML = generateStyles();
+      document.body.innerHTML = generateHTML404("DISCORD");
+      break;
+    case "www.spotify.com":
+      document.head.innerHTML = generateStyles();
+      document.body.innerHTML = generateHTML404("SPOTIFY");
+      break;
+  }
 
-
-switch (window.location.hostname) {
-  case "www.youtube.com":
-    document.head.innerHTML = generateStyles();
-    document.body.innerHTML = generateHTML404("YOUTUBE");
-    break;
-  case "www.facebook.com":
-    document.head.innerHTML = generateStyles();
-    document.body.innerHTML = generateHTML404("FACEBOOK");
-    break;
-  case "www.netflix.com":
-    document.head.innerHTML = generateStyles();
-    document.body.innerHTML = generateHTML404("NETFLIX");
-    break;
-  case "www.roblox.com":
-    document.head.innerHTML = generateStyles();
-    document.body.innerHTML = generateHTML404("ROBLOX");
-    break;
-  case "discord.com":
-    document.head.innerHTML = generateStyles();
-    document.body.innerHTML = generateHTML404("DISCORD");
-    break;
-  case "www.spotify.com":
-    document.head.innerHTML = generateStyles();
-    document.body.innerHTML = generateHTML404("SPOTIFY");
-    break;
 }
+
+
+
+
+
+chrome.runtime.onMessage.addListener(function(message ,sender, sendResponse) {
+  if(message.action === "startdisplay"){
+    overtakeWebBody()
+   console.log("display message from background:", message.display, message.disdom);
+  
+  //  if(message.display === true){
+
+  
+
+  //     // switch (window.location.hostname) {
+  //     //   case `${message.disdom}`:
+  //     //     document.head.innerHTML = generateStyles();
+  //     //     document.body.innerHTML = generateHTML404(`${message.disdom}`);
+  //     //     break;
+  //     // }
+   
+  //  }
+   sendResponse("i tried putting the page up")
+   return true;
+  }
+ })
+
+ 
+
+
+
+
+
+
