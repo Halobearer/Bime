@@ -1,22 +1,17 @@
-
-
-
 {
   "manifest_version": 3,
   "name": ".bime.",
-  "version": "1.0",
-  "description": "bime. tracker",
+  "version": "1.0.0",
+  "description": "Track, View and Block your website usage to improve, boost and increase productiveness amongst users, Try it it's cool!!",
   "permissions": [
     "tabs",
     "storage",
     "webRequest",
     "declarativeNetRequest"
   ],
-
   "background": {
     "service_worker": "scripts/background.js"
   },
-
   "icons": {
     "128": "images/cropped-bime-logoPNG.png"
   },
@@ -26,11 +21,14 @@
       "16": "images/cropped-bime-logoPNG.png"
     }
   },
-
   "web_accessible_resources": [
     {
-      "resources": ["*"],
-      "matches": ["<all_urls>"]
+      "resources": [
+        "*"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
     }
   ]
 }

@@ -1,5 +1,5 @@
 const generateHTML404 = (pageName) => {
-  return `<div id="clouds">
+    return `<div id="clouds">
     <div class="cloud x1"></div>
     <div class="cloud x1_5"></div>
     <div class="cloud x2"></div>
@@ -16,7 +16,7 @@ const generateHTML404 = (pageName) => {
 }
 
 const generateStyles = () => {
-  return `<style>@import url(https://fonts.googleapis.com/css?family=opensans:500);
+    return `<style>@import url(https://fonts.googleapis.com/css?family=opensans:500);
 body {
   background: #33cc99;
   color: #fff;
@@ -252,148 +252,233 @@ hr:after {
 
 
 const loadLottieAnimation = () => {
-  const animationContainer = document.createElement('div');
-  animationContainer.id = 'animation-container';
-  document.body.appendChild(
-animationContainer);
+    const animationContainer = document.createElement('div');
+    animationContainer.id = 'animation-container';
+    document.body.appendChild(
+        animationContainer);
 
-  const animationData = require('../animations/404.json');
+    const animationData = require('../animations/404.json');
 
 
-  const animate = lottie.loadAnimation({
-      container: animationContainer,
-      animationData: animationData,
-      renderer: "svg",
-      loop: true,
-      autoplay: true
-  });
+    const animate = lottie.loadAnimation({
+        container: animationContainer,
+        animationData: animationData,
+        renderer: "svg",
+        loop: true,
+        autoplay: true
+    });
 };
 
 document.addEventListener('DOMContentLoaded', function () {
-  const websiteMatch = document.querySelector('.host-text');
-  const saveButton = document.querySelector('.save-button');
-  const inputContainer = document.querySelector('.popup');
-  const curvedIcon = document.getElementById('curved-icon');
-  const curvedText = document.getElementById('curved-text');
-  const editDeleteIcons = document.querySelector('.edit-delete-icons');
+    const websiteMatch = document.querySelector('.host-text');
+    const saveButton = document.querySelector('.save-button');
+    const inputContainer = document.querySelector('.popup');
+    const curvedIcon = document.getElementById('curved-icon');
+    const curvedText = document.getElementById('curved-text');
+    const editDeleteIcons = document.querySelector('.edit-delete-icons');
 
-  const plusIcon = document.querySelector('.plus-icon')
-  const curvedBox = document.querySelector('.curved-box');
+    const plusIcon = document.querySelector('.plus-icon')
+    const curvedBox = document.querySelector('.curved-box');
+    const blockList = document.querySelector('.block-list');
 
-  plusIcon.style.display = 'none';
+    plusIcon.addEventListener('click', function () {
+        const newEntryInterface = createNewEntryInterface();
+        newEntryInterface.style.display = 'flex';
+        blockList.appendChild(newEntryInterface);
+    });
 
-  saveButton.addEventListener('click', function () {
-      const selectors = document.querySelectorAll('.popup');
-      console.log('selectors->', selectors);
+    function createNewEntryInterface() {
+        const newEntryDiv = document.createElement('div');
+        newEntryDiv.classList.add('new-entry');
 
-      selectors.forEach((selector) => {
-          const hostInput = selector.querySelector('input[type="text"]');
-          const FromInput = selector.querySelector('.FromInput');
-          const ToInput = selector.querySelector('.ToInput');
+        const inputLabel = document.createElement('label');
+        inputLabel.textContent = 'Enter Hostname: ';
 
-          const host = hostInput ? hostInput.value : '';
-          const From = FromInput ? FromInput.value : '';
-          const To = ToInput ? ToInput.value : '';
+        const input = document.createElement("input");
+        input.classList.add('host-input');
+        input.type = 'text';
 
-          console.log(`Site: ${host}`);
-          console.log(`From: ${From}`);
-          console.log(`To: ${To}`);
-          
-      chrome.runtime.sendMessage({ action: 'startFunction', domain: host, starttime: From, stoptime: To}, (response)=>{
-        console.log( 'response i received from background --> ',response);
-      })
-      
-  
-      })
+        const timeInputsDiv = document.createElement('div');
+        timeInputsDiv.classList.add('time-inputs');
 
-      const hostname = websiteMatch.value;
-      const normalizedHostname = normalizeHostname(hostname);
-      const icon = getIconForHostname(normalizedHostname);
+        const fromLabel = document.createElement('label');
+        fromLabel.textContent = 'From: ';
+        fromLabel.classList.add('time-label');
 
-      if (icon) {
-          curvedIcon.style.backgroundImage = `url(${chrome.runtime.getURL(icon)})`;
-      }
+        const fromInput = document.createElement('input');
+        fromInput.type = 'time';
+        fromInput.classList.add('FromInput');
 
-      curvedText.textContent = normalizedHostname;
-      inputContainer.style.display = 'none';
-      curvedBox.style.display = 'flex';
-      editDeleteIcons.style.display = 'flex';
-      plusIcon.style.display = 'block';
-  });
+        const toLabel = document.createElement('label');
+        toLabel.textContent = 'To: ';
+        toLabel.classList.add('time-label2');
 
-  function normalizeHostname(hostname) {
-      const prefix = 'www.';
-      if (hostname.startsWith(prefix)) {
-          return hostname;
-      }
-      return prefix + hostname;
-  }
+        const toInput = document.createElement('input');
+        toInput.type = 'time';
+        toInput.classList.add('ToInput');
 
-  function getIconForHostname(hostname) {
-      for (let i = 0; i < websiteData.length; i++) {
-          if (websiteData[i].hostname === hostname) {
-              return websiteData[i].icon;
-          }
-      }
-      return null;
-  }
+        const saveButton = document.createElement('button');
+        saveButton.textContent = 'Save';
+        saveButton.classList.add('usage-button');
 
+        timeInputsDiv.appendChild(fromLabel);
+        timeInputsDiv.appendChild(fromInput);
+        timeInputsDiv.appendChild(toLabel);
+        timeInputsDiv.appendChild(toInput);
+
+        newEntryDiv.appendChild(inputLabel);
+        newEntryDiv.appendChild(input);
+        newEntryDiv.appendChild(timeInputsDiv);
+        newEntryDiv.appendChild(saveButton);
+
+        saveButton.addEventListener('click', function () {
+            const hostname = input.value.trim();
+            const fromTime = fromInput.value;
+            const toTime = toInput.value;
+
+            if (hostname && fromTime && toTime) {
+                console.log('New Hostname:', hostname);
+                console.log('From Time:', fromTime);
+                console.log('To Time:', toTime);
+                input.value = '';
+                fromInput.value = '';
+                toInput.value = '';
+            } else {
+                console.log('Please fill all the fields.');
+                alert('Please fill all the fields');
+            }
+        });
+        return newEntryDiv;
+    }
+
+    plusIcon.style.display = 'none';
+
+    saveButton.addEventListener('click', function () {
+        const selectors = document.querySelectorAll('.popup');
+        console.log('selectors->', selectors);
+
+        const hostname = websiteMatch.value;
+        const normalizedHostname = normalizeHostname(hostname);
+        const icon = getIconForHostname(normalizedHostname);
+
+        saveButton.addEventListener('click', function () {
+            const selectors = document.querySelectorAll('.popup');
+            console.log('selectors->', selectors);
+
+            selectors.forEach((selector) => {
+                const hostInput = selector.querySelector('input[type="text"]');
+                const FromInput = selector.querySelector('.FromInput');
+                const ToInput = selector.querySelector('.ToInput');
+
+                const host = hostInput ? hostInput.value : '';
+                const From = FromInput ? FromInput.value : '';
+                const To = ToInput ? ToInput.value : '';
+
+                console.log(`Site: ${host}`);
+                console.log(`From: ${From}`);
+                console.log(`To: ${To}`);
+
+                chrome.runtime.sendMessage({
+                    action: 'startFunction',
+                    domain: host,
+                    starttime: From,
+                    stoptime: To
+                }, (response) => {
+                    console.log('response i received from background --> ', response);
+                })
+
+
+            })
+
+            const hostname = websiteMatch.value;
+            const normalizedHostname = normalizeHostname(hostname);
+            const icon = getIconForHostname(normalizedHostname);
+
+            if (icon) {
+                curvedIcon.style.backgroundImage = `url(${chrome.runtime.getURL(icon)})`;
+            }
+
+            curvedText.textContent = normalizedHostname;
+            inputContainer.style.display = 'none';
+            curvedBox.style.display = 'flex';
+            editDeleteIcons.style.display = 'flex';
+            plusIcon.style.display = 'block';
+        });
+
+        function normalizeHostname(hostname) {
+            const prefix = 'www.';
+            if (hostname.startsWith(prefix)) {
+                return hostname;
+            }
+            return prefix + hostname;
+        }
+
+        function getIconForHostname(hostname) {
+            for (let i = 0; i < websiteData.length; i++) {
+                if (websiteData[i].hostname === hostname) {
+                    return websiteData[i].icon;
+                }
+            }
+            return null;
+        }
+
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const plusIcon = document.querySelector('.plus-icon');
+
+        let isSaveClicked = false;
+
+        plusIcon.addEventListener('click', function () {
+            addInputSection();
+        });
+
+        function addInputSection() {
+            if (!isSaveClicked) {
+                return;
+            }
+        }
+    })
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const clockIcon = document.querySelector('.clock-icon');
+
+        clockIcon.addEventListener('click', function () {
+            chrome.tabs.create({url: 'extension-page.html'});
+        });
+    });
+
+
+    switch (window.location.hostname) {
+        case
+        "www.youtube.com":
+            document.head.innerHTML = generateStyles();
+            document.body.innerHTML = generateHTML404("YOUTUBE");
+            break;
+        case
+        "www.facebook.com":
+            document.head.innerHTML = generateStyles();
+            document.body.innerHTML = generateHTML404("FACEBOOK");
+            break;
+        case
+        "www.netflix.com":
+            document.head.innerHTML = generateStyles();
+            document.body.innerHTML = generateHTML404("NETFLIX");
+            break;
+        case
+        "www.roblox.com":
+            document.head.innerHTML = generateStyles();
+            document.body.innerHTML = generateHTML404("ROBLOX");
+            break;
+        case
+        "discord.com":
+            document.head.innerHTML = generateStyles();
+            document.body.innerHTML = generateHTML404("DISCORD");
+            break;
+        case
+        "www.spotify.com":
+            document.head.innerHTML = generateStyles();
+            document.body.innerHTML = generateHTML404("SPOTIFY");
+            break;
+    }
 });
-
-document.addEventListener('DOMContentLoaded', function () {
-  const plusIcon = document.querySelector('.plus-icon');
-  const blockList = document.querySelector('.block-list');
-
-  let isSaveClicked = false;
-
-  plusIcon.addEventListener('click', function () {
-      addInputSection();
-  });
-
-  function addInputSection() {
-      if (!isSaveClicked) {
-          return;
-      }
-  }
-})
-
-document.addEventListener('DOMContentLoaded', function () {
-  const clockIcon = document.querySelector('.clock-icon');
-
-  clockIcon.addEventListener('click', function () {
-      chrome.tabs.create({url: 'extension-page.html'});
-  });
-});
-
-
-
-
-
-
-switch (window.location.hostname) {
-  case "www.youtube.com":
-    document.head.innerHTML = generateStyles();
-    document.body.innerHTML = generateHTML404("YOUTUBE");
-    break;
-  case "www.facebook.com":
-    document.head.innerHTML = generateStyles();
-    document.body.innerHTML = generateHTML404("FACEBOOK");
-    break;
-  case "www.netflix.com":
-    document.head.innerHTML = generateStyles();
-    document.body.innerHTML = generateHTML404("NETFLIX");
-    break;
-  case "www.roblox.com":
-    document.head.innerHTML = generateStyles();
-    document.body.innerHTML = generateHTML404("ROBLOX");
-    break;
-  case "discord.com":
-    document.head.innerHTML = generateStyles();
-    document.body.innerHTML = generateHTML404("DISCORD");
-    break;
-  case "www.spotify.com":
-    document.head.innerHTML = generateStyles();
-    document.body.innerHTML = generateHTML404("SPOTIFY");
-    break;
-}
-

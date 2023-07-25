@@ -129,6 +129,8 @@ body {
 }
 
 .curved-box {
+    overflow-y: auto;
+    overflow-x: hidden;
     position: relative;
     margin-top: 20px;
     padding: 10px;
@@ -258,8 +260,26 @@ input {
 }
 
 .block-list {
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
+    max-height: 200px; /* Set the max height of the block-list to limit the visible entries */
+}
+
+.new-entry {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: darkorchid;
+    border-radius: 9px;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    height: 41px;
+    width: 351px;
+}
+
+.new-entry label {
+    margin-right: 10px;
 }
 
 .host-input {

@@ -20,17 +20,55 @@ const websiteData = [
     {hostname: "www.live.com", icon: "icons/outlook-icon.png"},
     {hostname: "www.docomo.ne.jp", icon: "icons/docomo-icon.ico"},
     {hostname: "www.linkedin.com", icon: "icons/linkedin-icon.png"},
-    {hostname: "www.openai.com", icon: ""},
-    {hostname: "www.reddit.com", icon: ""},
-    {hostname: "www.netflix.com", icon: ""},
-    {hostname: "www.dzen.ru", icon: ""},
-    {hostname: "www.office.com", icon: ""},
-    {hostname: "www.vk.com", icon: ""},
-    {hostname: "www.weather.com", icon: ""},
-    {hostname: "www.bing.com", icon: ""},
-    {hostname: "www.xhamster.com", icon: ""},
-    {hostname: "www.naver.com", icon: ""},
-    {hostname: "www.turbopages.com", icon: ""},
+    {hostname: "www.openai.com", icon: "icons/openai-icon.png"},
+    {hostname: "www.reddit.com", icon: "icons/reddit-icon.png"},
+    {hostname: "www.netflix.com", icon: "icons/netflix-icon.png"},
+    {hostname: "www.dzen.ru", icon: "icons/dzen-icon.png"},
+    {hostname: "www.office.com", icon: "icons/office-icon.png"},
+    {hostname: "www.vk.com", icon: "icons/vk-icon.png"},
+    {hostname: "www.weather.com", icon: "icons/weather-icon.png"},
+    {hostname: "www.bing.com", icon: "icons/bing-icon.png"},
+    {hostname: "www.xhamster.com", icon: "icons/xhamster-icon.png"},
+    {hostname: "www.naver.com", icon: "icons/naver-icon.png"},
+    {hostname: "www.turbopages.org", icon: ""},
+    {hostname: "www.semicolon.africa", icon: "icons/semicolon-icon.png"},
+    {hostname: "www.chat.openai.com", icon: "icons/chatopenai-icon.png"},
+    {hostname: "www.samsung.com", icon: ""},
+    {hostname: "www.discord.com", icon: ""},
+    {hostname: "www.max.com", icon: ""},
+    {hostname: "www.twitch.com", icon: ""},
+    {hostname: "www.pinterest.com", icon: "icons/pinterest-icon.png"},
+    {hostname: "www.bilibili.com", icon: ""},
+    {hostname: "www.microsoft.com", icon: ""},
+    {hostname: "www.zoom.us", icon: ""},
+    {hostname: "www.duckduckgo.com", icon: ""},
+    {hostname: "www.msn.com", icon: ""},
+    {hostname: "www.stripchat.com", icon: ""},
+    {hostname: "www.fandom.com", icon: ""},
+    {hostname: "www.quora.com", icon: ""},
+    {hostname: "www.cnn.com", icon: ""},
+    {hostname: "www.taboola.com", icon: ""},
+    {hostname: "www.udemy.com", icon: ""},
+    {hostname: "www.coursera.org", icon: ""},
+    {hostname: "www.khanacademy.org", icon: ""},
+    {hostname: "www.duolingo.com", icon: ""},
+    {hostname: "www.nike.com", icon: ""},
+    {hostname: "www.nordstrom.com", icon: ""},
+    {hostname: "www.walmart.com", icon: ""},
+    {hostname: "www.target.com", icon: ""},
+    {hostname: "www.apple.com", icon: ""},
+    {hostname: "www.patreon.com", icon: ""},
+    {hostname: "www.imgur.com", icon: ""},
+    {hostname: "www.nytimes.com", icon: ""},
+    {hostname: "www.foxnews.com"},
+    {hostname: "www.espn.com", icon: ""},
+    {hostname: "www.bbc.com", icon: ""},
+    {hostname: "www.cnbc.com", icon: ""},
+    {hostname: "www.dominos.com", icon: ""},
+    {hostname: "www.fmovies.to", icon: ""},
+    {hostname: "www.hulu.com", icon: ""},
+    {hostname: "www.disneyplus.com", icon: ""},
+    {hostname: "www.justwatch.com", icon: ""}
 
 ];
 document.addEventListener('DOMContentLoaded', function () {
@@ -70,9 +108,18 @@ function normalizeHostname(hostname) {
     if (hostname.startsWith(prefix)) {
         return hostname;
     }
-    return prefix + hostname;
-
+    return prefix + hostname.toLowerCase();
 }
 
+// Function to save the website data to local storage
+function saveWebsiteData(data) {
+    const websites = getWebsiteData();
+    websites.push(data);
+    localStorage.setItem('websites', JSON.stringify(websites));
+}
 
-
+// Function to retrieve website data from local storage
+function getWebsiteData() {
+    const websitesJSON = localStorage.getItem('websites');
+    return websitesJSON ? JSON.parse(websitesJSON) : [];
+}
