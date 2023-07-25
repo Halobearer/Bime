@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": ".bime.",
-  "version": "1.0",
-  "description": "bime. tracker",
+  "version": "1.0.0",
+  "description": "Track, View and Block your website usage to improve, boost and increase productiveness amongst users, Try it it's cool!!",
   "permissions": [
     "tabs",
     "storage",
