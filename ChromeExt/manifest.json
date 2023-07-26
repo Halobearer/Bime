@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": ".bime.",
+  "name": "Bime.",
   "version": "1.0.0",
-  "description": "Track, View and Block your website usage to improve, boost and increase productiveness amongst users, Try it it's cool!!",
+  "description": "Track, View and Block your website usage to improve, boost and increase productiveness amongst users.",
   "permissions": [
     "tabs",
     "storage",
@@ -13,12 +13,12 @@
     "service_worker": "scripts/background.js"
   },
   "icons": {
-    "128": "images/cropped-bime-logoPNG.png"
+    "128": "images/bimepng.png"
   },
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "images/cropped-bime-logoPNG.png"
+      "16": "images/bimepng.png"
     }
   },
   "web_accessible_resources": [
@@ -29,6 +29,14 @@
       "matches": [
         "<all_urls>"
       ]
+    }
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"], 
+      "js": ["scripts/popup.js"] 
+      
     }
   ]
 }

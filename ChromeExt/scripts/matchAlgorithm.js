@@ -21,6 +21,18 @@ const websiteData = [
     {hostname: "www.docomo.ne.jp", icon: "icons/docomo-icon.ico"},
     {hostname: "www.linkedin.com", icon: "icons/linkedin-icon.png"},
     {hostname: "www.openai.com", icon: "icons/openai-icon.png"},
+    {hostname: "www.reddit.com", icon: ""},
+    {hostname: "www.netflix.com", icon: "icons/netflix-icon.png"},
+    {hostname: "www.dzen.ru", icon: ""},
+    {hostname: "www.office.com", icon: ""},
+    {hostname: "www.vk.com", icon: ""},
+    {hostname: "www.weather.com", icon: ""},
+    {hostname: "www.bing.com", icon: ""},
+    {hostname: "www.xhamster.com", icon: ""},
+    {hostname: "www.naver.com", icon: ""},
+    {hostname: "www.turbopages.com", icon: ""},
+    {hostname: "www.semicolon.africa", icon: "icons/semicolon-icon.png"},
+    {hostname: "www.chat.openai.com", icon: "icons/chatopenai-icon.png"},
     {hostname: "www.reddit.com", icon: "icons/reddit-icon.png"},
     {hostname: "www.netflix.com", icon: "icons/netflix-icon.png"},
     {hostname: "www.dzen.ru", icon: "icons/dzen-icon.png"},
@@ -69,8 +81,8 @@ const websiteData = [
     {hostname: "www.hulu.com", icon: ""},
     {hostname: "www.disneyplus.com", icon: ""},
     {hostname: "www.justwatch.com", icon: ""}
-
 ];
+
 document.addEventListener('DOMContentLoaded', function () {
     const websiteMatch = document.querySelector('.host-text');
 
