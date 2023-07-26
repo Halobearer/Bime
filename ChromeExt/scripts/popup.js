@@ -292,7 +292,7 @@ document.addEventListener('DOMContentLoaded', function () {
         newEntryDiv.classList.add('new-entry');
 
         const inputLabel = document.createElement('label');
-        inputLabel.textContent = 'Enter Hostname: ';
+        inputLabel.ariaPlaceholder = 'Enter Hostname: ';
 
         const input = document.createElement("input");
         input.classList.add('host-input');
@@ -348,8 +348,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 alert('Please fill all the fields');
             }
         });
+
         return newEntryDiv;
     }
+
 
     plusIcon.style.display = 'none';
 
@@ -474,6 +476,7 @@ document.addEventListener('DOMContentLoaded', function () {
         "discord.com":
             document.head.innerHTML = generateStyles();
             document.body.innerHTML = generateHTML404("DISCORD");
+            break;
             break;
         case
         "www.spotify.com":
