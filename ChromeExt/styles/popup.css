@@ -3,8 +3,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 380px;
-    width: 430px;
+    height: 500px;
+    width: 450px;
     margin: 0;
     background-color: dimgrey;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
@@ -26,7 +26,7 @@ body {
 .hostname-input {
     width: 346px;
     background-color: dimgrey;
-    top: -23px;
+    top: 28px;
     position: relative;
     display: flex;
     align-items: center;
@@ -35,7 +35,7 @@ body {
 
 .hostname-input input[type="text"] {
     height: 36px;
-    width: 300px;
+    width: 307px;
     padding: 10px;
     border: 1px solid #888888;
     border-radius: 5px;
@@ -53,7 +53,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    top: -6px;
+    top: 43px;
     position: relative;
 }
 
@@ -120,6 +120,7 @@ body {
     transition: 0.3s ease;
     position: relative;
     left: 267px;
+    top: 36px;
 }
 
 .save-button:hover {
@@ -142,7 +143,7 @@ body {
     color: white;
     height: 41px;
     width: 351px;
-    top: -97px;
+    top: -140px;
 }
 
 .website-info {
@@ -225,7 +226,7 @@ body {
 input {
     height: 1rem;
     margin: 2%;
-    border: solid 2pt #fff;
+    border: 1px solid #888888;
     border-radius: 6px;
     outline: none;
     background-color: transparent;
@@ -249,8 +250,8 @@ input {
     color: black;
     border-radius: 40%;
     position: absolute;
-    bottom: -324px;
-    left: 86%;
+    bottom: -437px;
+    left: 82%;
     transform: translateX(-50%);
 }
 
@@ -266,24 +267,103 @@ input {
 }
 
 .new-entry {
-    margin-top: 10px;
+    margin-top: 0px;
     padding: 10px;
-    background-color: darkorchid;
+    background-color: inherit;
     border-radius: 9px;
     display: none;
+    /* Set the flexbox properties to control the layout */
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    position: relative;
+    top: 46px;
+    /*align-items: center;*/
+    /*justify-content: space-between;*/
+    /*color: white;*/
+    /*height: 41px;*/
+    /*width: 351px;*/
+}
+
+.host-input {
+    height: 36px;
+    width: 300px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.host-text {
+    height: 35px;
+    width: 305px;
+    position: relative;
+}
+
+.host-text2 {
+    height: 35px;
+    width: 305px;
+    position: relative;
+    left: -6px;
+}
+
+.FromInput {
+
+}
+
+.FromInput2 {
+
+}
+
+.ToInput2 {
+
+}
+
+.new-entry .time-inputs {
+    display: flex;
     align-items: center;
-    justify-content: space-between;
-    color: white;
-    height: 41px;
-    width: 351px;
+    gap: 45px;
+}
+
+.new-entry .time-label {
+    /* Adjust the style for the "From" label */
+    font-size: 12px;
+    font-weight: bold;
+    color: #2c2c2c;
+}
+
+.new-entry .time-label2 {
+    /* Adjust the style for the "To" label */
+    font-size: 12px;
+    font-weight: bold;
+    color: #2c2c2c;
+}
+
+
+.new-entry .usage-button {
+    /* Adjust the style for the Save button */
+    height: 35px;
+    width: 3rem;
+    border-radius: 9px;
+    cursor: pointer;
+    border: none;
+    background-color: #888888;
+    color: black;
+    font-size: 16px;
+    font-family: "Comic Sans MS";
+    transition: transform 0.3s ease;
+    position: relative;
+    left: 122px;
+    top: -33px;
 }
 
 .new-entry label {
     margin-right: 10px;
+    color: white;
 }
 
 .host-input {
     width: 148px;
+    height: 1rem;
 }
 
 .usage-button {
