@@ -1,13 +1,3 @@
-/*body {*/
-/*    min-width: 420px;*/
-/*    min-height: 370px;*/
-/*    !*background-color: rgb(0, 0, 0, 0.37);*!*/
-/*    background-color: dimgrey;*/
-/*    border-bottom-left-radius: 12px;*/
-/*    border-bottom-right-radius: 12px;*/
-
-/*}*/
-
 body {
     font-family: "Comic Sans MS";
     display: flex;
@@ -17,13 +7,17 @@ body {
     width: 430px;
     margin: 0;
     background-color: dimgrey;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+#From {
+    position: relative;
+    right: 25px;
+    /*color: #888888;*/
+    /*font-size: 10px;*/
 }
 
 .popup {
-    /*padding: 20px;*/
-    /*border-radius: 10px;*/
-    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);*/
     position: relative;
     top: 20%;
     background-color: dimgrey;
@@ -58,8 +52,44 @@ body {
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     top: -6px;
     position: relative;
+}
+
+.time-label {
+    position: absolute;
+    top: -15px;
+    left: 18px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #2c2c2c;
+    animation: glowing 1.5s ease-in-out infinite;
+}
+
+.time-label2 {
+    position: absolute;
+    top: -15px;
+    left: 200px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #2c2c2c;
+    animation: glowing 1.5s ease-in-out infinite;
+}
+
+@keyframes glowing {
+    0% {
+        opacity: 0.7%;
+        text-shadow: 0 0 8px #00ff00;
+    }
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 16px #00ff00;
+    }
+    100% {
+        opacity: 0.7%;
+        text-shadow: 0 0 8px #00ff00;
+    }
 }
 
 .time-inputs input[type="time"] {
@@ -99,6 +129,8 @@ body {
 }
 
 .curved-box {
+    overflow-y: auto;
+    overflow-x: hidden;
     position: relative;
     margin-top: 20px;
     padding: 10px;
@@ -190,20 +222,6 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-/*.expop-body {*/
-/*    width: 26rem;*/
-/*    height: 18rem;*/
-/*    margin-top: 4rem;*/
-/*}*/
-
-
-.block-list {
-    width: 25rem;
-    height: 15rem;
-    margin-top: 1rem;
-    margin-left: 0.3rem;
-
-}
 
 input {
     height: 1rem;
@@ -215,29 +233,6 @@ input {
     color: white;
     padding: 0.2rem;
     font-family: "Comic Sans MS";
-
-}
-
-/*.selector-text {*/
-/*    display: flex;*/
-/*    height: fit-content;*/
-/*    width: 25rem;*/
-/*    border: solid 2 tpt red;*/
-/*    color: white;*/
-/*    font-weight: 400;*/
-/*    font-family: "Comic Sans MS";*/
-/*}*/
-
-.select-site {
-    margin-left: 4rem;
-}
-
-.from {
-    margin-left: 7rem;
-}
-
-.to {
-    margin-left: 6rem;
 }
 
 .selector-input {
@@ -266,8 +261,26 @@ input {
 }
 
 .block-list {
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
+    max-height: 200px; /* Set the max height of the block-list to limit the visible entries */
+}
+
+.new-entry {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: darkorchid;
+    border-radius: 9px;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    height: 41px;
+    width: 351px;
+}
+
+.new-entry label {
+    margin-right: 10px;
 }
 
 .host-input {

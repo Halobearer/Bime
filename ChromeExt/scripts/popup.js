@@ -374,13 +374,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 const overtakeWebBody = ()=>{
-
+  console.log(window.location.hostname);
   switch (window.location.hostname) {
     case "www.youtube.com":
       document.head.innerHTML = generateStyles();
       document.body.innerHTML = generateHTML404("YOUTUBE");
       break;
-    case "www.facebook.com":
+    case "www.pinterest.com":
       document.head.innerHTML = generateStyles();
       document.body.innerHTML = generateHTML404("FACEBOOK");
       break;
@@ -405,14 +405,15 @@ const overtakeWebBody = ()=>{
 }
 
 
+overtakeWebBody()
+
 
 
 
 chrome.runtime.onMessage.addListener(function(message ,sender, sendResponse) {
   if(message.action === "startdisplay"){
-    overtakeWebBody()
    console.log("display message from background:", message.display, message.disdom);
-  
+   
   //  if(message.display === true){
 
   
@@ -429,11 +430,3 @@ chrome.runtime.onMessage.addListener(function(message ,sender, sendResponse) {
    return true;
   }
  })
-
- 
-
-
-
-
-
-
