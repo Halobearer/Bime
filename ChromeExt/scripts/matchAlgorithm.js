@@ -72,7 +72,7 @@ const websiteData = [
     {hostname: "www.patreon.com", icon: ""},
     {hostname: "www.imgur.com", icon: ""},
     {hostname: "www.nytimes.com", icon: ""},
-    {hostname: "www.foxnews.com"},
+    {hostname: "www.foxnews.com", icon: ""},
     {hostname: "www.espn.com", icon: ""},
     {hostname: "www.bbc.com", icon: ""},
     {hostname: "www.cnbc.com", icon: ""},
