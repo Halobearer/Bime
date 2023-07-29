@@ -277,30 +277,16 @@ document.addEventListener('DOMContentLoaded', function () {
         const hostname = websiteMatch.value;
         const normalizedHostname = normalizeHostname(hostname);
         const icon = getIconForHostname(normalizedHostname);
-
-        const entryContainer = document.createElement('div');
-        entryContainer.classList.add('entry-container');
-
-        const iconElement = document.createElement('img');
-        iconElement.src = icon || 'icons/default-icon.png';
-        iconElement.alt = normalizedHostname + ' icon';
-        entryContainer.appendChild(iconElement);
-
-        const hostnameElement = document.createElement('span');
-        hostnameElement.innerText = normalizedHostname;
-        entryContainer.appendChild(hostnameElement);
-
-        const displayedHostnames = document.getElementById('displayed-hostnames');
-        displayedHostnames.appendChild(entryContainer);
-
+        appendHostnameEntry(normalizedHostname, icon);
         websiteMatch.value = '';
 
         function normalizeHostname(hostname) {
             const prefix = 'www.';
-            if (hostname.startsWith(prefix)) {
-                return hostname;
+            const host = hostname.toLowerCase();
+            if (host.startsWith(prefix)) {
+                return host;
             }
-            return prefix + hostname;
+            return prefix + host;
         }
 
         function getIconForHostname(hostname) {
@@ -312,8 +298,42 @@ document.addEventListener('DOMContentLoaded', function () {
             return null;
         }
     });
-});
 
+    function appendHostnameEntry(hostname, icon) {
+        const displayedHostnames = document.getElementById('displayed-hostnames');
+
+        const entryContainer = document.createElement('div');
+        entryContainer.classList.add('entry-container');
+
+        const iconElement = document.createElement('img');
+        iconElement.src = icon || 'icons/default-icon.png';
+        iconElement.alt = hostname + ' icon';
+        entryContainer.appendChild(iconElement);
+
+        const hostnameElement = document.createElement('span');
+        hostnameElement.innerText = hostname;
+        entryContainer.appendChild(hostnameElement);
+
+        const editIconElement = document.createElement('span');
+        editIconElement.innerText = '&#9998;';
+        editIconElement.classList.add('edit-icon');
+        editIconElement.addEventListener('click', function () {
+
+        });
+        entryContainer.appendChild(editIconElement);
+
+        const deleteIconElement = document.createElement('span');
+        deleteIconElement.innerText = '&#10006;';
+        deleteIconElement.classList.add('delete-icon');
+        deleteIconElement.addEventListener('click', function () {
+
+            entryContainer.remove();
+        });
+        entryContainer.appendChild(deleteIconElement);
+
+        displayedHostnames.appendChild(entryContainer);
+    }
+});
 
 document.addEventListener('DOMContentLoaded', function () {
     const clockIcon = document.querySelector('.clock-icon');
@@ -322,6 +342,7 @@ document.addEventListener('DOMContentLoaded', function () {
         chrome.tabs.create({url: 'extension-page.html'});
     });
 });
+
 
 // const inputContainer = document.querySelector('.popup');
 // const curvedIcon = document.getElementById('curved-icon');
