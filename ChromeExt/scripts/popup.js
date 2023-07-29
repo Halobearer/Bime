@@ -316,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const editIconElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
         editIconElement.innerHTML = '<use xlink:href="icons/svg/icons.svg#edit-icon"></use>'
-        // editIconElement.alt = 'Edit';
+        editIconElement.alt = 'Edit';
         editIconElement.classList.add('edit-icon');
         editIconElement.addEventListener('click', function () {
 
@@ -325,7 +325,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const deleteIconElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
         deleteIconElement.innerHTML = '<use xlink:href="icons/svg/icons.svg#delete-icon"></use>'
-        // editIconElement.alt = 'Delete';
+        editIconElement.alt = 'Delete';
         deleteIconElement.classList.add('delete-icon');
         deleteIconElement.addEventListener('click', function () {
 
