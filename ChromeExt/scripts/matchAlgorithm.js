@@ -43,8 +43,6 @@ const websiteData = [
     {hostname: "www.xhamster.com", icon: "icons/xhamster-icon.png"},
     {hostname: "www.naver.com", icon: "icons/naver-icon.png"},
     {hostname: "www.turbopages.org", icon: ""},
-    {hostname: "www.semicolon.africa", icon: "icons/semicolon-icon.png"},
-    {hostname: "www.chat.openai.com", icon: "icons/chatopenai-icon.png"},
     {hostname: "www.samsung.com", icon: ""},
     {hostname: "www.discord.com", icon: ""},
     {hostname: "www.max.com", icon: ""},
@@ -85,6 +83,7 @@ const websiteData = [
 
 document.addEventListener('DOMContentLoaded', function () {
     const websiteMatch = document.querySelector('.host-text');
+    const defaultIcon = 'icons/default-icon.png';
 
     websiteMatch.addEventListener('input', function () {
         const hostname = websiteMatch.value;
@@ -99,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        displayIcon(null);
+        displayIcon(defaultIcon);
     });
 
     function displayIcon(icon) {
@@ -123,14 +122,14 @@ function normalizeHostname(hostname) {
     return prefix + hostname.toLowerCase();
 }
 
-// Function to save the website data to local storage
+/**Function to save the website data to local storage**/
 function saveWebsiteData(data) {
     const websites = getWebsiteData();
     websites.push(data);
     localStorage.setItem('websites', JSON.stringify(websites));
 }
 
-// Function to retrieve website data from local storage
+/**Function to retrieve website data from local storage**/
 function getWebsiteData() {
     const websitesJSON = localStorage.getItem('websites');
     return websitesJSON ? JSON.parse(websitesJSON) : [];

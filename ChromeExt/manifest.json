@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Bime.",
   "version": "1.0.0",
-  "description": "Track, View and Block your website usage to improve, boost and increase productiveness amongst users.",
+  "description": "Track, View and Block your website usage to improve, boost and increase productiveness.",
   "permissions": [
     "tabs",
     "storage",
@@ -31,12 +31,22 @@
       ]
     }
   ],
-
   "content_scripts": [
     {
-      "matches": ["<all_urls>"], 
-      "js": ["scripts/popup.js"] 
-      
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "scripts/popup.js"
+      ]
     }
-  ]
+  ],
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+B",
+        "mac": "Command+B"
+      }
+    }
+  }
 }
