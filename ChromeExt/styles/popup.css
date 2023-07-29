@@ -273,10 +273,13 @@ body {
     height: 18px;
     cursor: pointer;
     color: #888888;
-    position: relative;
-    top: 26px;
-    right: -9px;
-    transform: translateY(-50%);
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.edit-icon:hover,
+.delete-icon:hover {
+    fill: white;
 }
 
 .delete-icon {
@@ -292,6 +295,7 @@ body {
     border: 1px solid #888888;
     border-radius: 5px;
     padding: 8px;
+    position: relative;
 }
 
 .entry-container img {
@@ -307,21 +311,8 @@ body {
     font-family: "Comic Sans MS", serif;
     font-size: 16px;
     color: white;
+    flex: 1;
 }
-
-/*#displayed-hostnames span {*/
-
-/*}*/
-
-
-/*#curved-icon {*/
-/*    width: 24px;*/
-/*    height: 24px;*/
-/*    background-size: contain;*/
-/*    background-repeat: no-repeat;*/
-/*    background-position: center;*/
-/*    margin-right: 10px;*/
-/*}*/
 
 /*.curved-box {*/
 /*    overflow-y: auto;*/

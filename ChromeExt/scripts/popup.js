@@ -314,16 +314,18 @@ document.addEventListener('DOMContentLoaded', function () {
         hostnameElement.innerText = hostname;
         entryContainer.appendChild(hostnameElement);
 
-        const editIconElement = document.createElement('span');
-        editIconElement.innerText = '&#9998;';
+        const editIconElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        editIconElement.innerHTML = '<use xlink:href="icons/svg/icons.svg#edit-icon"></use>'
+        // editIconElement.alt = 'Edit';
         editIconElement.classList.add('edit-icon');
         editIconElement.addEventListener('click', function () {
 
         });
         entryContainer.appendChild(editIconElement);
 
-        const deleteIconElement = document.createElement('span');
-        deleteIconElement.innerText = '&#10006;';
+        const deleteIconElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        deleteIconElement.innerHTML = '<use xlink:href="icons/svg/icons.svg#delete-icon"></use>'
+        // editIconElement.alt = 'Delete';
         deleteIconElement.classList.add('delete-icon');
         deleteIconElement.addEventListener('click', function () {
 
