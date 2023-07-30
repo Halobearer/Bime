@@ -3,28 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Time Management Quotes</title>
     <style>
-        .overlay-404 {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: rgba(0, 0, 0, 0.8);
-          z-index: 9999;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          font-size: 24px;
-          font-weight: bold;
+       .maincontainer{
+        background: #e4e4e4;
+        height: 95vh;
+        border: solid 2pt transparent;
+        overflow: hidden;
+       }
+        .quote-container {
+            margin-top: 10rem;
+            margin-left: 27rem;
+            width: 27rem;
+            height: 15rem;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #ccc;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            color: white;
+            text-align: center;
         }
-      </style>
+        .quote-text {
+            font-size: 20px;
+            margin-top: 4rem;
+        }
+        .quote-author {
+            font-style: italic;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
-    <div class="overlay-404">
-        hi i'm james
+  <div class="maincontainer">
+    <div class="quote-container">
+      <div class="quote-text">"Placeholder Quote Text"</div>
+      <div class="quote-author">- Placeholder Author</div>
     </div>
+  </div>
+  <script src="scripts/404.js"></script>
 </body>
 </html>

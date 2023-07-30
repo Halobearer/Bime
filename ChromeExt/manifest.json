@@ -11,6 +11,7 @@
   ],
   "background": {
     "service_worker": "scripts/background.js"
+    
   },
   "icons": {
     "128": "images/bimepng.png"
