@@ -81,11 +81,11 @@ const websiteData = [
     {hostname: "www.justwatch.com", icon: ""}
 ];
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
     const websiteMatch = document.querySelector('.host-text');
     const defaultIcon = 'icons/default-icon.png';
 
-    websiteMatch.addEventListener('input', function () {
+    websiteMatch.addEventListener('input', () => {
         const hostname = websiteMatch.value;
         const normalizedHostname = normalizeHostname(hostname);
 
@@ -122,15 +122,15 @@ function normalizeHostname(hostname) {
     return prefix + hostname.toLowerCase();
 }
 
-/**Function to save the website data to local storage**/
-function saveWebsiteData(data) {
-    const websites = getWebsiteData();
-    websites.push(data);
-    localStorage.setItem('websites', JSON.stringify(websites));
-}
-
-/**Function to retrieve website data from local storage**/
-function getWebsiteData() {
-    const websitesJSON = localStorage.getItem('websites');
-    return websitesJSON ? JSON.parse(websitesJSON) : [];
-}
+// /**Function to save the website data to local storage**/
+// function saveWebsiteData(data) {
+//     const websites = getWebsiteData();
+//     websites.push(data);
+//     localStorage.setItem('websites', JSON.stringify(websites));
+// }
+//
+// /**Function to retrieve website data from local storage**/
+// function getWebsiteData() {
+//     const websitesJSON = localStorage.getItem('websites');
+//     return websitesJSON ? JSON.parse(websitesJSON) : [];
+// }
