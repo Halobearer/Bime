@@ -268,36 +268,113 @@
 //     });
 // };
 
-document.addEventListener('DOMContentLoaded', function () {
+let websiteList = [];
+
+document.addEventListener('DOMContentLoaded', () => {
     const websiteMatch = document.querySelector('.host-text');
     const saveButton = document.querySelector('.save-button');
     const hostIcon = document.getElementById('hostname-icon');
 
-    saveButton.addEventListener('click', function () {
+
+    saveButton.addEventListener('click', () => {
         const hostname = websiteMatch.value;
         const normalizedHostname = normalizeHostname(hostname);
         const icon = getIconForHostname(normalizedHostname);
-        appendHostnameEntry(normalizedHostname, icon);
+        const startTime = document.getElementById('from-input').value;
+        const stopTime = document.getElementById('to-input').value;
+        const fromInput = document.getElementById('from-input');
+        const toInput = document.getElementById('to-input');
+
+        websiteMatch.addEventListener('input', removeErrorMessage);
+        fromInput.addEventListener('input', removeErrorMessage);
+        toInput.addEventListener('input', removeErrorMessage);
+
+        if (!hostname || !startTime || !stopTime) {
+            displayErrorMessage("Please fill all the input fields!");
+            return;
+        }
+        removeErrorMessage();
+
+        const websiteObject = {
+            domain: normalizedHostname,
+            startTime: startTime,
+            stopTime: stopTime
+        };
+        websiteList.push(websiteObject);
+        appendHostnameEntry(normalizedHostname, getIconForHostname(normalizedHostname));
         websiteMatch.value = '';
+        document.getElementById('from-input').value = '';
+        document.getElementById('to-input').value = '';
 
-        function normalizeHostname(hostname) {
-            const prefix = 'www.';
-            const host = hostname.toLowerCase();
-            if (host.startsWith(prefix)) {
-                return host;
-            }
-            return prefix + host;
-        }
+        // document.getElementById('activate-bime').addEventListener('click', () => {
 
-        function getIconForHostname(hostname) {
-            for (let i = 0; i < websiteData.length; i++) {
-                if (websiteData[i].hostname === hostname) {
-                    return websiteData[i].icon;
-                }
-            }
-            return null;
-        }
+        chrome.runtime.sendMessage({action: "updateWebsiteList", websiteList}, (response) => {
+            console.log("Response from background.js:", response);
+        });
+
+        saveWebsiteListToStorage();
     });
+
+    function displayErrorMessage(message) {
+        const errorMessageElement = document.createElement('div');
+        errorMessageElement.classList.add('error-message');
+        errorMessageElement.innerText = message;
+
+        const bottomSection = document.querySelector('.bottom-section');
+        bottomSection.appendChild(errorMessageElement);
+
+        setTimeout(() => {
+            errorMessageElement.remove();
+        }, 2000);
+        saveButton.classList.add('disabled-button');
+        saveButton.disabled = true;
+    }
+
+    function removeErrorMessage() {
+        const errorMessageElement = document.querySelector('.error-message');
+        if (errorMessageElement) {
+            errorMessageElement.remove();
+        }
+
+        saveButton.classList.remove('disabled-button');
+        saveButton.disabled = false;
+    }
+
+    function saveWebsiteListToStorage() {
+        localStorage.setItem('websites', JSON.stringify(websiteList));
+    }
+
+    function normalizeHostname(hostname) {
+        const prefix = 'www.';
+        const host = hostname.toLowerCase();
+        if (host.startsWith(prefix)) {
+            return host;
+        }
+        return prefix + host;
+    }
+
+    function getIconForHostname(hostname) {
+        for (let i = 0; i < websiteData.length; i++) {
+            if (websiteData[i].hostname === hostname) {
+                return websiteData[i].icon;
+            }
+        }
+        return null;
+    }
+
+    const storedWebsites = JSON.parse(localStorage.getItem('websites'));
+    if (Array.isArray(storedWebsites)) {
+        websiteList = storedWebsites;
+        storedWebsites.forEach((website) => {
+            appendHostnameEntry(website.domain, getIconForHostname(website.domain));
+        });
+    }
+
+    const clockIcon = document.querySelector('.clock-icon');
+    clockIcon.addEventListener('click', () => {
+        chrome.tabs.create({url: 'extension-page.html'});
+    });
+
 
     function appendHostnameEntry(hostname, icon) {
         const displayedHostnames = document.getElementById('displayed-hostnames');
@@ -318,7 +395,7 @@ document.addEventListener('DOMContentLoaded', function () {
         editIconElement.innerHTML = '<use xlink:href="icons/svg/icons.svg#edit-icon"></use>'
         editIconElement.alt = 'Edit';
         editIconElement.classList.add('edit-icon');
-        editIconElement.addEventListener('click', function () {
+        editIconElement.addEventListener('click', () => {
 
         });
         entryContainer.appendChild(editIconElement);
@@ -327,8 +404,13 @@ document.addEventListener('DOMContentLoaded', function () {
         deleteIconElement.innerHTML = '<use xlink:href="icons/svg/icons.svg#delete-icon"></use>'
         editIconElement.alt = 'Delete';
         deleteIconElement.classList.add('delete-icon');
-        deleteIconElement.addEventListener('click', function () {
+        deleteIconElement.addEventListener('click', () => {
 
+            const index = websiteList.findIndex((website) => website.domain === hostname);
+            if (index !== -1) {
+                websiteList.splice(index, 1);
+                saveWebsiteListToStorage();
+            }
             entryContainer.remove();
         });
         entryContainer.appendChild(deleteIconElement);
@@ -337,22 +419,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    const clockIcon = document.querySelector('.clock-icon');
-
-    clockIcon.addEventListener('click', function () {
-        chrome.tabs.create({url: 'extension-page.html'});
-    });
-});
-
-
 // const inputContainer = document.querySelector('.popup');
 // const curvedIcon = document.getElementById('curved-icon');
 // const curvedText = document.getElementById('curved-text');
 // const editDeleteIcons = document.querySelector('.edit-delete-icons');
 // const curvedBox = document.querySelector('.curved-box');
 
-// saveButton.addEventListener('click', function () {
+// saveButton.addEventListener('click', ½ () {
 //     const selectors = document.querySelectorAll('.popup');
 //     console.log('selectors->', selectors);
 //

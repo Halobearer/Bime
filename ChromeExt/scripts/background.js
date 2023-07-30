@@ -134,7 +134,7 @@ const timer = (site, startTime, endTime) => {
         return;
     }, 1000);
 };
-chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     userDomain = message.domain;
     userStartTime = message.starttime;
     userStopTime = message.stoptime;
@@ -147,6 +147,16 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
             userStopTime
         );
         sendResponse({userDomain, userStartTime, userStopTime});
+        return true;
+    }
+});
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.action === "updateWebsiteList") {
+        chrome.storage.sync.set({websites: message.websiteList}, () => {
+            console.log("Website list saved in chrome.storage:", message.websiteList);
+            sendResponse({success: true});
+        });
         return true;
     }
 });

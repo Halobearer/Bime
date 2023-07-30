@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>Popup</title>
-    <link rel="stylesheet" type="text/css" href="styles/popup.css">
+    <link href="styles/popup.css" rel="stylesheet" type="text/css">
     <script src="scripts/popup.js"></script>
     <script src="scripts/matchAlgorithm.js"></script>
 </head>
@@ -38,13 +38,13 @@
 
     <div class="bottom-section">
         <div class="hostname-input">
-            <input type="text" placeholder="Enter Hostname" class="host-text" autocomplete="on">
+            <input type="text" placeholder="Enter Hostname to restrict" class="host-text" autocomplete="on">
             <div id="hostname-icon"></div>
         </div>
 
         <div class="time-inputs">
-            <input type="time" id="from-input" class="time-label">
-            <input type="time" id="to-input" class="time-label2">
+            <input type="time" id="from-input" class="time-label" value="12:00">
+            <input type="time" id="to-input" class="time-label2" value="12:00">
         </div>
         <button class="save-button">Save</button>
     </div>
