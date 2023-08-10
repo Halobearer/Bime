@@ -43,8 +43,6 @@ const websiteData = [
     {hostname: "www.xhamster.com", icon: "icons/xhamster-icon.png"},
     {hostname: "www.naver.com", icon: "icons/naver-icon.png"},
     {hostname: "www.turbopages.org", icon: ""},
-    {hostname: "www.semicolon.africa", icon: "icons/semicolon-icon.png"},
-    {hostname: "www.chat.openai.com", icon: "icons/chatopenai-icon.png"},
     {hostname: "www.samsung.com", icon: ""},
     {hostname: "www.discord.com", icon: ""},
     {hostname: "www.max.com", icon: ""},
@@ -72,7 +70,7 @@ const websiteData = [
     {hostname: "www.patreon.com", icon: ""},
     {hostname: "www.imgur.com", icon: ""},
     {hostname: "www.nytimes.com", icon: ""},
-    {hostname: "www.foxnews.com"},
+    {hostname: "www.foxnews.com", icon: ""},
     {hostname: "www.espn.com", icon: ""},
     {hostname: "www.bbc.com", icon: ""},
     {hostname: "www.cnbc.com", icon: ""},
@@ -83,10 +81,11 @@ const websiteData = [
     {hostname: "www.justwatch.com", icon: ""}
 ];
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
     const websiteMatch = document.querySelector('.host-text');
+    const defaultIcon = 'icons/default-icon.png';
 
-    websiteMatch.addEventListener('input', function () {
+    websiteMatch.addEventListener('input', () => {
         const hostname = websiteMatch.value;
         const normalizedHostname = normalizeHostname(hostname);
 
@@ -99,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        displayIcon(null);
+        displayIcon(defaultIcon);
     });
 
     function displayIcon(icon) {
@@ -123,15 +122,15 @@ function normalizeHostname(hostname) {
     return prefix + hostname.toLowerCase();
 }
 
-// Function to save the website data to local storage
-function saveWebsiteData(data) {
-    const websites = getWebsiteData();
-    websites.push(data);
-    localStorage.setItem('websites', JSON.stringify(websites));
-}
-
-// Function to retrieve website data from local storage
-function getWebsiteData() {
-    const websitesJSON = localStorage.getItem('websites');
-    return websitesJSON ? JSON.parse(websitesJSON) : [];
-}
+// /**Function to save the website data to local storage**/
+// function saveWebsiteData(data) {
+//     const websites = getWebsiteData();
+//     websites.push(data);
+//     localStorage.setItem('websites', JSON.stringify(websites));
+// }
+//
+// /**Function to retrieve website data from local storage**/
+// function getWebsiteData() {
+//     const websitesJSON = localStorage.getItem('websites');
+//     return websitesJSON ? JSON.parse(websitesJSON) : [];
+// }

@@ -35,6 +35,8 @@ function displayQuote() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    displayQuote(); // Display the first quote immediately
-    setInterval(displayQuote, 3000); // Change the quote every 3 seconds
+    displayQuote(); 
+    setInterval(displayQuote, 3000); 
 });
+
+

@@ -10,7 +10,7 @@
 <div class="Popup-Main">
     <div class="icons-div">
 
-        <h1 class="Bime-text">Bime.</h1>
+        <div class="bime-text"></div>
 
         <svg width="1.2em" height="1.2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"
              class="clock-icon margin-right">
@@ -36,19 +36,20 @@
 
            </div>
        </div>
+
     </div>
 
     <div class="bottom-section">
         <div class="hostname-input">
-            <input type="text" placeholder="Enter Hostname to restrict" class="host-text" autocomplete="on">
+            <input type="text" placeholder="Enter website to block" class="host-text" autocomplete="on">
             <div id="hostname-icon"></div>
         </div>
-
+        <div class="labels"> <p>From</p> <p>To</p></div>
         <div class="time-inputs">
-            <input type="time" id="from-input" class="time-label" value="00:00">
-            <input type="time" id="to-input" class="time-label2" value="00:00">
+            <input type="time" id="from-input" class="time-label" >
+            <input type="time" id="to-input" class="time-label2" >
         </div>
-        <button class="save-button">Save</button>
+        <button class="save-button">Block</button>
     </div>
 </div>
 </body>
@@ -104,4 +105,6 @@
 <!--        </div>-->
 
 <!--        <button class="usage-button">Save</button>-->
+
 <!--    </div>-->
+

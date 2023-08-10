@@ -1,0 +1,38 @@
+.maincontainer{
+    background: #acabab;
+    height: 95vh;
+    border: solid 2pt transparent;
+    overflow: hidden;
+   }
+
+
+   .bimelogo{
+    border: solid 2pt red;
+    height: 3rem;
+    width: 8rem;
+    margin-top: 5rem;
+    margin-left: 37.5rem;
+    
+
+   }
+    .quote-container {
+        margin-top: 3rem;
+        margin-left: 27rem;
+        width: 27rem;
+        height: 15rem;
+        padding: 20px;
+        border: 1px solid #ccc;
+        background-color: #ccc;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        color: white;
+        text-align: center;
+    }
+    .quote-text {
+        font-size: 20px;
+        margin-top: 4rem;
+    }
+    .quote-author {
+        font-style: italic;
+        font-size: 16px;
+    }
