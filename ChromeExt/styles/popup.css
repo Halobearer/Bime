@@ -10,16 +10,7 @@ body {
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
 }
 
-#activate-bime {
-    background-color: rebeccapurple;
-    height: 39px;
-    width: 93px;
-    position: relative;
-    top: -46%;
-    left: 40%;
-    border-radius: 5px;
-    cursor: pointer;
-}
+
 
 .Bime-text {
     position: relative;
@@ -96,21 +87,29 @@ body {
 
 .top-section {
     width: 360px;
-    height: 160px;
+    height: 170px;
     border: 1px solid #888888;
     margin-top: 10px;
     position: relative;
     top: -15px;
     border-radius: 6px;
-    /* background-color: #fff; */
+    background: url(../images/bimepng.png);
+    background-size:180px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgba(80, 79, 79, 0.93);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    padding-top: 2rem;
+    padding-top: 1rem;
     padding-bottom: 2rem;
 }
-
+.tsoverlay{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(80, 79, 79, 0.74);
+}
 .bottom-section {
     width: 380px;
     height: 165px;
