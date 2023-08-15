@@ -7,13 +7,15 @@
     "tabs",
     "storage",
     "webRequest",
+    "background",
     "declarativeNetRequest"
   ],
   "background": {
     "service_worker": "scripts/background.js"
+    
   },
   "icons": {
-    "128": "images/bimepic.png"
+    "128": "images/bimepng.png"
   },
   "action": {
     "default_popup": "popup.html",
