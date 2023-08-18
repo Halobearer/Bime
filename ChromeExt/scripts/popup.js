@@ -1,5 +1,5 @@
 const generateHTML404 = (pageName) => {
-  return `<div id="clouds">
+    return `<div id="clouds">
   <div class="cloud x1"></div>
   <div class="cloud x1_5"></div>
   <div class="cloud x2"></div>
@@ -14,12 +14,6 @@ const generateHTML404 = (pageName) => {
   <div class='_2'>STUDYING > ${pageName}</div>
 </div> `
 }
-
-
-
-
-
-
 
 
 const generateStyles = () => {
@@ -301,15 +295,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         function addToWebSiteList(websitelist, newObj) {
-          const index = websitelist.findIndex(obj => obj.domain === newObj.domain);
-          
-          if (index !== -1) {
-            // Object with similar domain found, remove it
-            websitelist.splice(index, 1);
-          } else {
-            // Push the new object into websitelist only if no similar object found
-            websitelist.push(newObj);
-          }
+            const index = websitelist.findIndex(obj => obj.domain === newObj.domain);
+
+            if (index !== -1) {
+                // Object with similar domain found, remove it
+                websitelist.splice(index, 1);
+            } else {
+                // Push the new object into website-list only if no similar object found
+                websitelist.push(newObj);
+            }
         }
 
         const websiteObject = {
@@ -318,24 +312,22 @@ document.addEventListener('DOMContentLoaded', () => {
             stopTime: stopTime
         };
 
-          addToWebSiteList(websiteList, websiteObject);
-          console.log('this is popup weblist-->', websiteList)
+        addToWebSiteList(websiteList, websiteObject);
+        console.log('this is popup weblist-->', websiteList)
 
-        
 
         chrome.runtime.sendMessage({
             action: 'startFunction',
             bimeObjects: websiteList
-            }, (response) => {
-             console.log('response i received from background --> ', response);
+        }, (response) => {
+            console.log('response i received from background --> ', response);
         })
-       
+
         appendHostnameEntry(normalizedHostname, getIconForHostname(normalizedHostname));
         websiteMatch.value = '';
         document.getElementById('from-input').value = '';
         document.getElementById('to-input').value = '';
 
-    
 
         chrome.runtime.sendMessage({action: "updateWebsiteList", websiteList}, (response) => {
             console.log(" update Response from background.js:", response);
@@ -430,7 +422,6 @@ document.addEventListener('DOMContentLoaded', () => {
         entryContainer.appendChild(editIconElement);
 
 
-
         const deleteIconElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
         deleteIconElement.innerHTML = '<use xlink:href="icons/svg/icons.svg#delete-icon"></use>'
         editIconElement.alt = 'Delete';
@@ -439,13 +430,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
             const index = websiteList.findIndex((website) => website.domain === hostname);
-            
+
 
             chrome.runtime.sendMessage({
                 action: 'removebime',
                 hostName: websiteList[index].domain
-                }, (response) => {
-                 console.log('deleting from bacground-blocklist', response);
+            }, (response) => {
+                console.log('deleting from bacground-blocklist', response);
             })
 
             if (index !== -1) {
@@ -463,71 +454,66 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+// chrome.tabs.onCreated.addListener(function (tab) {
+
+//     console.log('New tab created:', tab.url);
+//   });
 
 
-
-  // chrome.tabs.onCreated.addListener(function (tab) {
-    
-  //     console.log('New tab created:', tab.url);
-  //   });
-
-
-
-
-
-  chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     async function getMatchingTab() {
         const tabs = await chrome.tabs.query({
-          url: [
-            `*://${message.disdom.domain}/*`
-          ],
+            url: [
+                `*://${message.disdom.domain}/*`
+            ],
         });
-      
+
         tabs.forEach((tab) => {
-          console.log( 'this is the first overriden tab ->>',tab.url); 
-          // chrome.tabs.update({url:'../404.html'})// Print the URL of each matched tab
+            console.log('this is the first overridden tab ->>', tab.url);
+            // chrome.tabs.update({url:'../404.html'})// Print the URL of each matched tab
         });
-      }
-      
+    }
+
     if (message.action === "startdisplay") {
         getMatchingTab()
-        chrome.tabs.query({ url: `*://${message.disdom.domain}/* `}, (tabs) => {
-              if (tabs.some((tab) => tab.url.includes(message.disdom.domain))) {
+        chrome.tabs.query({url: `*://${message.disdom.domain}/* `}, (tabs) => {
+            if (tabs.some((tab) => tab.url.includes(message.disdom.domain))) {
                 if (tabs.length === 0) {
-                  alert(`The website you are trying to block is not open.`);
-                  return;
+                    alert(`The website you are trying to block is not open.`);
+                    return;
                 }
                 const activeTab = tabs[0];
                 const activeTabId = activeTab.id;
-                console.log('first tab id from block',activeTabId)
+                console.log('first tab id from block', activeTabId)
                 inject404Page(activeTabId)
-                    // alert(`${urlToBlockFormatted} is currently blocked`);
-                    // setBlocked(true);
-        }})
+                // alert(`${urlToBlockFormatted} is currently blocked`);
+                // setBlocked(true);
+            }
+        })
 
         const inject404Page = (tabId) => {
-          /*eslint-disable no-undef */
-          chrome.scripting.executeScript(
-            {
-              target: { tabId: tabId },
-              func: () => {
-                document.body.innerHTML = generateHTML404();
-                document.head.innerHTML = generateStyles();
-              },
-            },
-            () => {
-              if (chrome.runtime.lastError) {
-                console.error("Script injection failed:", chrome.runtime.lastError);
-              } else {
-                console.log("Script injected successfully");
-              }
-            }
-          );
-          setBlocked(true);
-    };
+            /*eslint-disable no-undef */
+            chrome.scripting.executeScript(
+                {
+                    target: {tabId: tabId},
+                    func: () => {
+                        document.body.innerHTML = generateHTML404();
+                        document.head.innerHTML = generateStyles();
+                    },
+                },
+                () => {
+                    if (chrome.runtime.lastError) {
+                        console.error("Script injection failed:", chrome.runtime.lastError);
+                    } else {
+                        console.log("Script injected successfully");
+                    }
+                }
+            );
+            setBlocked(true);
+        };
 
-    const generateHTML404 =()=>{
-      return(`
+        const generateHTML404 = () => {
+            return (`
       <!DOCTYPE html>
       <html lang="en">
       <head>
@@ -548,10 +534,10 @@ document.addEventListener('DOMContentLoaded', () => {
       
          
       `)
-    }
-  
-   const generateStyles = () => {
-      return (`
+        }
+
+        const generateStyles = () => {
+            return (`
       <style>
       
       body {
@@ -601,51 +587,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
       </style>`
-      )
-  
-    };
+            )
 
-        sendResponse({success: true});   
+        };
+
+        sendResponse({success: true});
         return true;
-    
-}});
+
+    }
+});
 
 
- 
-
-
-
-    async function getMatchingTabs() {
-        const tabs = await chrome.tabs.query({
-          url: [
+async function getMatchingTabs() {
+    const tabs = await chrome.tabs.query({
+        url: [
             "chrome-extension://ogdnckgcfdomnomannmjjcpnpfhfpfll/*"
-          ],
-        });
-      
-        tabs.forEach((tab) => {
-          console.log( 'this is the overriden tab ->>',tab.url); // Print the URL of each matched tab
-        });
-      }
-
-
-
-    chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-        if (message.action === "stopdisplay") {
-            const theDomain = message.disdom.domain
-            console.log('site to be unblocked:-->', message.disdom.domain);
-            // chrome.tabs.update({url:theDomain})
-            getMatchingTabs();
-            sendResponse({ success: true });
-            return true;
-        }
+        ],
     });
-    
 
-   
-        
+    tabs.forEach((tab) => {
+        console.log('this is the overriden tab ->>', tab.url); // Print the URL of each matched tab
+    });
+}
 
 
-   
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.action === "stopdisplay") {
+        const theDomain = message.disdom.domain
+        console.log('site to be unblocked:-->', message.disdom.domain);
+        // chrome.tabs.update({url:theDomain})
+        getMatchingTabs();
+        sendResponse({success: true});
+        return true;
+    }
+});
+
 
 // switch (window.location.hostname) {
 //     case
