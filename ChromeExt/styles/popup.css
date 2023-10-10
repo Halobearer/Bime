@@ -224,7 +224,7 @@ body {
 }
 
 .time-inputs input[type="time"]:focus {
-    border-color: rgb(7, 192, 136);
+    border-color: #106d51;
     border-style: solid;
     border-width: 2px;
 }
@@ -396,19 +396,4 @@ body {
     opacity: 35.2%;
 }
 
-::-webkit-scrollbar {
-    width: 2px;
-}
-
-::-webkit-scrollbar-track {
-    background: #f1f1f100;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #88888804;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #55555500;
-
-}
+    

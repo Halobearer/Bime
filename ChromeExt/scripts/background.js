@@ -238,7 +238,7 @@ const unblockSite = (site) => {
     });
 
 
-  //code that powers delete icon.
+
   chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === "removebime") {
         unblockSite(message.hostName)
